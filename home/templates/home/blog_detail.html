@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+
+<html>
+  {% block head %}
+    <title>Blog</title>
+  {% endblock %}
+
+  {% block body %}
+    <link href="/static/accounts/blog.css" type="text/css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Saira" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400, 600" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Mr+Dafoe" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+    <div class="container">
+        <div class = "col-md-10">
+            <div class ="well">
+            <img src="{{MEDIA_URL}}/{{bpost.pic}}">
+            <h1 class="text-uppercase">{{ bpost.title }}</h1>
+            <h3 id ="smallicons"><i id ="user" class="fa fa-user" aria-hidden="true"></i>
+            <i id = "clock" class="fa fa-clock-o" aria-hidden="true"></i>{{bpost.date}}<i id = "comments" class="fa fa-comment" aria-hidden="true"></i> {{bpost.comment_set.count}} comments</h3>
+
+            <a class="readmore" href="{{ bpost.get_absolute_url }}">{{bpost.title}}Read more ...</a> &nbsp;
+
+
+            <p>{{ bpost.body}}</p>
+            <!--<h3> Written by
+            <a href="{% url 'accounts:view_profile_with_pk' pk=bpost.author.pk %}">
+            {{bpost.author.username}}</a>
+            on {{bpost.date}}
+            </h3>-->
+            </div>
+        <form method="post">
+          {% csrf_token %}
+          {% load widget_tweaks %}
+          {% for hidden_field in form.hidden_fields %}
+            {{ hidden_field }}
+          {% endfor %}
+
+          {% if form.non_field_errors %}
+            <div class="alert alert-danger" role="alert">Danger alert</div>
+              {% for error in form.non_field_errors %}
+                {{ error }}
+              {% endfor %}
+            </div>
+          {% endif %}
+          {% for field in form.visible_fields %}
+            <div class="form-group">
+              {{ field.label_tag }}
+              {% if form.is_bound %}
+                {% if field.errors %}
+                    <div class="form-group has-error">
+                      {% render_field field class="form-control" %}
+                    </div>
+                    {% for error in field.errors %}
+                        <div class="errorlist">
+                            {{ error }}
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="form-group has-success">
+                        {% render_field field class="form-control" %}
+                    </div>
+                {% endif %}
+              {% else %}
+                {% render_field field class="form-control" %}
+              {% endif %}
+              {% if field.help_text %}
+                <small class="form-text text-muted">{{ field.help_text }}</small>
+              {% endif %}
+            </div>
+          {% endfor %}
+            <button id = "sub" type = "submit">Submit</button>
+<!--         <span><input type="submit" class="btn btn-info" value="Submit" id="submit"></span>-->
+        </form>
+        <div id = "wellcomments">
+            <h1 id = "commentsheader">Comments<!--<i id="pencil"class="fa fa-pencil" aria-hidden="true"></i><h1>--!>
+            {% for comment in comments %}
+                <h2 id ="commentname">{{comment.Name}}</h2>
+                <h4 id = "actualcomment">{{comment.comment}}</h3>
+            {% endfor %}
+        </div>
+    </div>
+  {% endblock %}
+</html>

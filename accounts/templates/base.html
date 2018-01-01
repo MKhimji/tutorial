@@ -1,0 +1,63 @@
+<html>
+    <script
+        src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://use.fontawesome.com/cdfd602f6e.js"></script>
+    <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="/static/accounts/styles.css" type="text/css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Saira" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Aldrich" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <meta name = "viewrt" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    {%block head%}
+
+    <title>Home</title>
+    {%endblock%}
+    </head>
+
+  <body>
+   <nav class="navbar navbar-fixed-top">
+     <div class="container-fluid">
+        {% if user.is_authenticated %}
+        <ul class="nav navbar-nav">
+            {% load static %}
+            <li><a id = "brand" href="{% url 'home:home' %}">MO's BLOG</a></li><!--<img src="{% static "m2.png" %}"/>--!>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <!--<p class="navbar-text">Logged in as <a href ="{% url 'accounts:view_profile' %}">{{user}}</a></p>--!>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <div class="w3-container w3-center w3-animate-left">
+                    <hr id="navhr">
+                    </div>
+                    <li><a href="{% url 'accounts:view_profile' %}">Profile</a></li>
+                    <li><a href="{% url 'accounts:edit_profile' %}">Edit Profile</a></li>
+                    <li><a href="{% url 'accounts:change_password' %}">Change Password</a></li>
+                    <li><a href="{% url 'accounts:logout' %}">Log out</a></li>
+                </ul>
+            </li>
+        </ul>
+            <!--<a href="/" class="navbar-brand"><img src=https://c1.staticflickr.com/6/5481/11529605486_2d29dfe4f5_b.jpghttps://pbs.twimg.com/profile_images/75511503/ql_button.png>-->
+            {% endif %}
+        </div>
+     </div>
+    </nav>
+
+        {% block body %}
+            <h1>Base</h1>
+        {% endblock %}
+
+
+    </body>
+    
+</html>
+

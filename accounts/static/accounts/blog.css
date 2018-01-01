@@ -1,0 +1,132 @@
+.container{
+    position:relative;
+    top:100px;
+    right:30px;
+}
+
+.well{
+    width:700px;
+    background:black;
+}
+
+.well img{
+    width:658px;
+    height:410px;
+}
+
+
+
+.col-md-10 h1{
+    font-family: 'Orbitron', sans-serif;
+    color: grey;
+    position:relative;
+    margin-top:17px;
+
+
+}
+
+
+.col-md-10 p{
+    font-family: 'Saira', sans-serif;
+    font-size:15px;
+    color:white;
+    max-width:660px;
+}
+
+
+.col-md-10 h3{
+    font-family: 'Orbitron', sans-serif;
+    font-size:13px;
+    color:grey;
+
+}
+
+.col-md-10 h3 a:hover{
+    transition:ease-in 0.1s;
+    text-decoration:none;
+
+}
+/*user clock icons*/
+
+h3 #user{
+    font-size:14px;
+    color:#00ffff;
+    margin-right:2px;
+
+}
+
+h3 #clock{
+    font-size:14px;
+    color:#00ffff;
+    margin-left:9px;
+    margin-right:5px;
+
+}
+
+h3 #comments{
+    font-size:14px;
+    color:#00ffff;
+    margin-left:5px;
+    margin-right:2px;
+
+}
+
+
+/*text next to icons*/
+
+
+
+
+
+#commentsheader{
+    color:black;
+    font-size:23px;
+    position:relative;
+    margin-top:20px;
+}
+
+/*#pencil{
+  padding:10px;
+  font-size:20px;
+
+}*/
+
+#commentname{
+    font-family: 'Saira', sans-serif;
+    font-size:15px;
+    position:relative;
+    max-width:650px;
+    color:black;
+}
+
+#actualcomment{
+    font-family: 'Saira', sans-serif;
+    font-size:12px;
+    position:relative;
+    max-width:650px;
+    color:black;
+
+
+
+}
+
+
+
+.container form{
+    font-family: 'Orbitron', sans-serif;
+    font-size:12px;
+    width:650px;
+}
+
+
+#sub{
+    font-family: 'Orbitron', sans-serif;
+    font-size: 15px;
+    width:90px;
+    height: 25px;
+    text-align: center;
+    line-height: 15px;
+    padding:1px 1px;
+
+}
+

@@ -1,0 +1,25 @@
+<html>
+    {% block head %}
+      <title>Blog</title>
+    {% endblock %}
+    <h2>Add Blogpost entry</h2>
+      <form method = "post">
+        {%csrf_token%}
+        {{form.as_p}}
+        <br>        
+        <span><input type="submit" class="btn btn-info" value="Submit" id="submitpost"></span>
+      </form>
+    {% block body %}
+      <!--<h1>{{ view.title }}</h1>!-->
+      <ul>
+        {% for x in view.bpost %}
+          <li>
+            {{ request.title }}
+            {{ x.author }}
+            {{ x.date }}
+          </li>
+        {% endfor %}
+      <ul>
+    {% endblock %}
+    
+</html>

@@ -1,0 +1,57 @@
+{%extends 'base.html'%}
+
+{%block body%}
+
+<link href="/static/accounts/reg_form.css" type="text/css" rel="stylesheet">
+
+
+<div class="container">
+
+    <form method="post">
+      {% csrf_token %}
+      {% load widget_tweaks %}
+      {% for hidden_field in form.hidden_fields %}
+        {{ hidden_field }}
+      {% endfor %}
+
+      {% if form.non_field_errors %}
+        <div class="alert alert-danger" role="alert">Danger alert</div>
+          {% for error in form.non_field_errors %}
+            {{ error }}
+          {% endfor %}
+        </div>
+      {% endif %}
+      {% for field in form.visible_fields %}
+        <div class="form-group">
+          {{ field.label_tag }}
+          {% if form.is_bound %}
+            {% if field.errors %}
+                <div class="form-group has-error">
+                  {% render_field field class="form-control" %}
+                </div>
+                {% for error in field.errors %}
+                    <div class="errorlist">
+                        {{ error }}
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="form-group has-success">
+                    {% render_field field class="form-control" %}
+                </div>
+            {% endif %}
+          {% else %}
+            {% render_field field class="form-control" %}
+          {% endif %}
+          {% if field.help_text %}
+            <small class="form-text text-muted">{{ field.help_text }}</small>
+          {% endif %}
+        </div>
+      {% endfor %}
+
+      <button id = "sub" type = "submit">Submit</button>
+    </form>
+
+</div>
+
+{% endblock %}
+

@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+
+
+{% block body %}
+<link href="/static/accounts/home.css" type="text/css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Saira" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Raleway:400, 600" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Mr+Dafoe" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+
+
+
+<div class = "container">
+    <div class = "col-md-10">
+        <div class ="well">
+        {% for p in allposts %}
+            <a href="{% url 'home:view_blogpost_with_pk' year=p.date.year month=p.date.month day=p.date.day slug=p.slug %}"><img src="{{MEDIA_URL}}/{{p.pic}}"></a>
+            <h1 class="text-uppercase"><a href="{% url 'home:view_blogpost_with_pk'  year=p.date.year month=p.date.month day=p.date.day slug=p.slug %}">
+                {{p.title}}</a></h1>
+            <h3 id ="smallicons">
+            <i id ="user" class="fa fa-user" aria-hidden="true"></i>
+            <a href="{% url 'accounts:view_profile_with_pk' pk=p.author.pk %}">
+            {{p.author.username}}</a>
+            <i id = "clock" class="fa fa-clock-o" aria-hidden="true"></i>{{p.date}}
+            <i id = "comments" class="fa fa-comment" aria-hidden="true"></i>
+            <a href= "{% url 'home:view_blogpost_with_pk' year=p.date.year month=p.date.month day=p.date.day slug=p.slug %}#wellcomments"><!--Takes to exact comments section position but cant remove # without angular?!-->
+            {{p.comment_set.count}} comments</a> </h3>
+            <p>{{p.body|safe|truncatewords:"50"}}<a id= "readmore" href="{% url 'home:view_blogpost_with_pk' year=p.date.year month=p.date.month day=p.date.day slug=p.slug %}"> read more</a></p>
+            <hr id = "horizontalrule">
+            <br>
+        {%endfor%}
+        </div>
+           <!--<h2>Write away!</h2>
+            <form method = "post">
+            {%csrf_token%}
+            {{form.post}}
+            <br>
+            <button id = "sub"type = "submit">Submit</button>
+            <span><input type="submit" class="btn btn-info" value="Submit" id="submitpost"></span>
+            </form>
+        <h2>{{text}}</h2>
+        {% for post in posts %}
+            <p id= "actualpost">{{post.post}}</p>
+            <h4>Posted by : <a href="{% url 'accounts:view_profile_with_pk' pk=post.user.pk %}">{{post.user.get_full_name}}</a>
+            on {{post.created}}</h4>
+        {% endfor %}!-->
+    </div>
+    <div class = "col-sm-2">
+        <!--<h2>Users
+        <i class="fa fa-users" aria-hidden="true"></i>
+        <i class="fa fa-users" aria-hidden="true" id = "borderthree"></i>
+        </h2>
+        {% for user in users %}
+            <a href="{% url 'accounts:view_profile_with_pk' pk=user.pk %}">
+            <h3>{{user.username}}
+            </a>
+            {% if not user in friends %}
+             <a href="{% url 'home:change_friends' operation='add' pk=user.pk %}">
+            <i class="fa fa-user-plus" aria-hidden="true"></i>
+            <i class="fa fa-user-plus" aria-hidden="true" id="borderone"></i>
+            </a>
+
+            </h3>
+            {% endif %}
+        {% endfor %}
+        <h2>Friends</h2>
+        {% for friend in friends %}
+            <a href="{% url 'accounts:view_profile_with_pk' pk=friend.pk %}">
+            <h3>{{friend.username}}
+            </a>
+            <a href="{% url 'home:change_friends' operation='remove' pk=friend.pk %}">
+            <i class="fa fa-times" aria-hidden="true"></i>
+            <i class="fa fa-times" aria-hidden="true" id="bordertwo"></i>
+
+            </a>
+            </h3>
+        {% endfor %}-->
+    </div>
+</div>
+
+
+
+{%endblock%}
