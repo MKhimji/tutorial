@@ -21,7 +21,7 @@ class Post(models.Model):
     post = models.CharField(max_length=500)
     user = models.ForeignKey(User)
 ##auto_now_add will date the object on creation but not on subsequent saves
-    created = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField(auto_now_add=True) 
 ##allows users to edit their posts, will update the date to the date of edit
     updated = models.DateTimeField(auto_now_add=True)
 
