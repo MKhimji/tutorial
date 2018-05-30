@@ -1,0 +1,139 @@
+*{
+    box-sizing: border-box;
+}
+
+.navbar.navbar-fixed-top{
+    font-family: 'Orbitron', sans-serif;
+    font-size: 20px;
+    background-color:black;
+    text-align:center;
+    margin: 0px auto;
+    border:0px;
+}
+
+/* #brand{
+    background-color:black;
+    font-family: 'Orbitron', sans-serif;
+    color:grey;
+    font-size:20px;
+} */
+
+
+
+/* Why did i have the two below ? I think its because some of the filters that were  being applied to the right hand side of the navbar were
+also being applied to the  logo so i eliminated them
+*/
+
+#brand:hover{
+    -webkit-filter: none;
+
+}
+
+#brand:active{
+    -webkit-filter: none;
+
+}
+
+/*overwrite bootstrap standard to prevent navbar blocks turning white background on click*/
+
+
+
+ul.dropdown-menu{
+    position:absolute;
+    margin-top:-50px;
+    height:118px;
+    background-color:black;
+    border:solid black 1px;
+}
+
+ul.dropdown-menu li a:hover{
+    background-color:black;
+    -webkit-filter: brightness(400%);
+    filter: brightness(400%);
+
+}
+ul.dropdown-menu div #navhr {
+    margin:0px;
+    bottom:8px;
+    position:relative;
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0),rgb(51, 153, 255), rgba(0, 0, 0, 0));
+
+}
+
+
+/* User Icon RHS */
+.nav.navbar-nav.navbar-right li a{
+    transition:ease 0.15s;
+    transition-duration:0.5s;
+
+}
+
+.nav.navbar-nav.navbar-right li a:hover{
+    background-color:black;
+}
+
+.nav.navbar-nav.navbar-right li a:focus{
+    background-color:black;
+    -webkit-filter: brightness(400%);
+    filter: brightness(400%);
+}
+
+.nav.navbar-nav.navbar-right li a:not(:hover){
+    background-color:black;
+
+}
+
+
+/* Code icon LHS */
+
+#brand{
+    transition:ease 0.15s;
+    transition-duration:0.5s;
+}
+
+#brand:hover{
+    background-color:black;
+    -webkit-filter: brightness(400%);
+    filter: brightness(400%);
+}
+
+#brand:focus{
+    background-color:black;
+}
+
+#brand:not(:hover){
+    background-color:black;
+
+
+}
+
+.fa-code{
+
+
+}
+/*.navbar-text{
+    color:white;
+    font-size:10px;
+    position:relative;
+    left:15px;
+}
+
+.navbar-text a:hover{
+    text-decoration:none;
+    background-color:black;
+    -webkit-filter:  brightness(500%);
+    filter:  brightness(500%);
+}
+
+.navbar-text a{
+    text-decoration:none;
+    transition:all linear 0.15s;
+}*/
+
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0),rgb(51, 153, 255), rgba(0, 0, 0, 0));
+}

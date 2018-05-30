@@ -1,0 +1,26 @@
+
+.container{
+    position:relative;
+    top:150px;
+    right:30px;
+    
+
+}
+
+table {
+    width: 80%;
+    text-align: center;
+
+}
+
+th {
+    height: 50px;
+    text-align: center;
+    padding:15px;
+
+}
+
+td{
+    padding:10px;
+
+}

@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from home.models import Post, BlogPost, Comment
+from home.models import BlogPost, Comment
 
 
 
@@ -25,19 +25,6 @@ from home.models import Post, BlogPost, Comment
 ##template_name: 'django/forms/widgets/text.html'
 ##Renders as: <input type="text" ...>
 
-class HomeForm(forms.ModelForm):
-    post = forms.CharField(widget = forms.TextInput(
-        attrs={
-            'class': 'form-control',
-            'placeholder':'Write a post...'
-            }
-
-))
-
-##reason for comma is we want the user to be connected to the post they made
-    class Meta:
-        model = Post
-        fields = ('post',)
 
 class BlogPostForm(forms.ModelForm):
     comment = forms.CharField(widget = forms.Textarea(
@@ -54,12 +41,6 @@ class BlogPostForm(forms.ModelForm):
         exclude = ['comment_body',]
 
 
-class addblogpostform(forms.ModelForm):
-
-     class Meta:
-        model = BlogPost
-        exclude = ['pic',]
-        #fields = '__all__'
 
     
 

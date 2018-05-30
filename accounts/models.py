@@ -15,6 +15,9 @@ from django.db.models.signals import post_save
 ##just associate the UserProfileManager with a filter (London in this case)
 ##in the UserProfile class by writing London = UserProfileManager()
 
+
+
+
 class UserProfileManager(models.Manager):
     def get_queryset(self):
         return super(UserProfileManager, self).get_queryset().filter(city='London')

@@ -2,60 +2,64 @@ from django.db import models
 from django.contrib.auth.models import User
 from django import forms
 from django_extensions.db.fields import AutoSlugField
-from tinymce.models import HTMLField
-
-
-# Create your models here.
-
-##We can have the user GET the empty form on the home page, allow the user to
-##type something in there and then send a POST request to the web server
-##What we need the model is for is to associate the POST request to the webserver
-##with a logged in user.
-
-##post is the text the user enters
-##user is just relating the particular post to the user ('User') is imported
+from ckeditor.fields import RichTextField
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes.fields import GenericRelation
+from django.db.models import Sum
 
 
 
-class Post(models.Model):
-    post = models.CharField(max_length=500)
+class LikeManager(models.Manager):
+    #https://docs.djangoproject.com/en/2.0/topics/db/managers/
+    #Manager returns objects by querying database for every model eg Like.objects.all, can change to Like.likes.all() for example by saying likes = model.Manager() in Like model
+    #Here we define custom manager called LikeManager and override the queryset that the manager returns see below
+    
+
+    use_for_related_fields = True
+
+    def likes(self):
+        # overwriting the default queryset returned by the Like Model so instead of blogpost.objects.all() we can dol 
+        # We take the queryset with records greater than 0
+        return self.get_queryset().filter(vote__gt=0)
+        #so we can do blogpost.likes.filter instead of blogpost.objects.filter
+      
+ 
+    def dislikes(self):
+        # We take the queryset with records less than 0
+        return self.get_queryset().filter(vote__lt=0)
+         
+    def sum_rating(self):
+        # We take the total rating
+        return self.get_queryset().aggregate(Sum('vote')).get('vote__sum') or 0
+         
+
+    def blogposts(self):
+        return self.get_queryset().filter(content_type__model='blogpost').order_by('-blogposts__date')
+         
+ 
+    def comments(self):
+        return self.get_queryset().filter(content_type__model='comment').order_by('-comments__date')
+
+class Like(models.Model):
+   
+    LIKE = 1
+    DISLIKE = -1
+    VOTES = (
+         (DISLIKE, 'Dislike'),
+         (LIKE, 'Like')
+     )
     user = models.ForeignKey(User)
-##auto_now_add will date the object on creation but not on subsequent saves
-    created = models.DateTimeField(auto_now_add=True)
-##allows users to edit their posts, will update the date to the date of edit
-    updated = models.DateTimeField(auto_now_add=True)
+    vote = models.SmallIntegerField(choices=VOTES)
+    content_type = models.ForeignKey(ContentType)
+    object_id = models.PositiveIntegerField()
+    content_object = GenericForeignKey()
 
-##Need a way of checking  whether the friend object were trying to get already has the current user as the owner of the friends list
-##So need to specifiy current_user in the Friend model
-##related_name is django thing
+    objects = LikeManager()
 
-##one object in this Friend model defines the relationship between the logged in users and other users on the website.
-class Friend(models.Model):
-    users = models.ManyToManyField(User)
-    current_user = models.ForeignKey(User, related_name = 'owner', null=True)
+    def __str__(self):
+        return "%s %s" %(self.user, self.vote)
 
-##current_user and new_friend are 2 user instances, current_user is logged in user
-
-##create a Friend instance(friend) i.e an object of 2 users linked together
-## and created returns a boolean value of whether the Friend object instance,i.e. friend was created or not
-##get or create gets an object from the database or creates one if there isnt already a reliationship
-##current_user = current_user is an if statement
-    @classmethod
-    def make_friend(cls, current_user, new_friend):
-        friend, created = cls.objects.get_or_create(
-            current_user=current_user
-
-        )
-        friend.users.add(new_friend)
-
-
-    @classmethod
-    def lose_friend(cls, current_user, new_friend):
-        friend, created = cls.objects.get_or_create(
-            current_user=current_user
-
-        )
-        friend.users.remove(new_friend)
 
 
 class BlogPost(models.Model):
@@ -63,8 +67,9 @@ class BlogPost(models.Model):
     title = models.CharField(max_length=64)
     date = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User)
-    body = HTMLField()
+    body = RichTextField(config_name='awesome_ckeditor')
     slug = AutoSlugField(null=True, default=None,overwrite=True, unique=True, populate_from='title')
+    votes = GenericRelation(Like, related_query_name='blogposts')
 
 #added overwrite = True because after i changed the title of the blogpost in admin it didnt update the slug and reused the old title
 
@@ -79,6 +84,12 @@ class Comment(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     comment_body = models.ForeignKey(BlogPost)
     comment = models.CharField(max_length=500)
+    votes = GenericRelation(Like,related_query_name='comments')
 
     def __str__(self):
         return "%s %s" %(self.Name, self.comment_body)
+
+
+
+
+   

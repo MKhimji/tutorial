@@ -1,81 +1,221 @@
 {% extends 'base.html' %}
 
 
-<html>
+
   {% block head %}
     <title>Blog</title>
+    <link href="/static/ckeditor/ckeditor/plugins/codesnippet/lib/highlight/styles/github.css" rel="stylesheet"/>
+    <link href="/static/accounts/blog.css" type="text/css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
+   
   {% endblock %}
 
   {% block body %}
-    <link href="/static/accounts/blog.css" type="text/css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Saira" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:400, 600" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Mr+Dafoe" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
-    <div class="container">
-        <div class = "col-md-10">
-            <div class ="well">
-            <img src="{{MEDIA_URL}}/{{bpost.pic}}">
-            <h1 class="text-uppercase">{{ bpost.title }}</h1>
-            <h3 id ="smallicons"><i id ="user" class="fa fa-user" aria-hidden="true"></i> <a href="{% url 'accounts:view_profile_with_pk' pk=bpost.author.pk %}">
-            {{bpost.author.username}}</a><i id = "clock" class="fa fa-clock-o" aria-hidden="true"></i>{{bpost.date}}<i id = "comments" class="fa fa-comment" aria-hidden="true"></i> {{bpost.comment_set.count}} comments</h3>
-            <p>{{ bpost.body|safe}}</p>
-            <!--<h3> Written by
-            <a href="{% url 'accounts:view_profile_with_pk' pk=bpost.author.pk %}">
-            {{bpost.author.username}}</a>
-            on {{bpost.date}}
-            </h3>-->
-            </div>
-        <form method="post">
-          {% csrf_token %}
-          {% load widget_tweaks %}
-          {% for hidden_field in form.hidden_fields %}
-            {{ hidden_field }}
-          {% endfor %}
 
-          {% if form.non_field_errors %}
-            <div class="alert alert-danger" role="alert">Danger alert</div>
-              {% for error in form.non_field_errors %}
-                {{ error }}
-              {% endfor %}
+  
+
+  
+    <div class="container">
+
+        <div class = "col-md-10">
+            <div class = "eznav">
+                <li>        
+                    <span id = "bcrumb"><a href="{% url 'home:home' %}">Blog</a></span><i class="fa fa-angle-right fa-sm" aria-hidden="true"></i>
+                    <span id = "nonita">{{bpost.title}}</span>
+                </li>
             </div>
-          {% endif %}
-          {% for field in form.visible_fields %}
-            <div class="form-group">
-              {{ field.label_tag }}
-              {% if form.is_bound %}
-                {% if field.errors %}
-                    <div class="form-group has-error">
-                      {% render_field field class="form-control" %}
-                    </div>
-                    {% for error in field.errors %}
-                        <div class="errorlist">
-                            {{ error }}
-                        </div>
-                    {% endfor %}
-                {% else %}
-                    <div class="form-group has-success">
-                        {% render_field field class="form-control" %}
-                    </div>
-                {% endif %}
-              {% else %}
-                {% render_field field class="form-control" %}
-              {% endif %}
-              {% if field.help_text %}
-                <small class="form-text text-muted">{{ field.help_text }}</small>
-              {% endif %}
-            </div>
-          {% endfor %}
-            <button id = "sub" type = "submit">Submit</button>
-<!--         <span><input type="submit" class="btn btn-info" value="Submit" id="submit"></span>-->
-        </form>
-        <div id = "wellcomments">
-            <h1 id = "commentsheader">Comments<!--<i id="pencil"class="fa fa-pencil" aria-hidden="true"></i><h1>--!>
-            {% for comment in comments %}
-                <h2 id ="commentname">{{comment.Name}}</h2>
-                <h4 id = "actualcomment">{{comment.comment}}</h3>
+            
+            <h1 class="text-uppercase">{{ bpost.title }}</h1>
+    
+            <div id = "userclockcomment">
+                <span id = "users"><i class="fa fa-user" aria-hidden="true"></i> <a href="{% url 'accounts:view_profile_with_pk' pk=bpost.author.pk %}">
+                {{bpost.author.username}}</a></span>
+                <span id = "clocks"><i class="fa fa-clock-o" aria-hidden="true"></i>{{bpost.date}}</span>
+                <span id = "comments"><i class="fa fa-comment" aria-hidden="true"></i>
+                <a href= "{% url 'home:view_blogpost_with_pk' year=bpost.date.year month=bpost.date.month day=bpost.date.day slug=bpost.slug %}#l2comment"> 
+                {{bpost.comment_set.count}} comments</a></span>      
+            </div>     
+           
+            <p>{{bpost.body|safe}}</p>
+            
+            <ul>
+                <!-- <li><a href="{% url 'home:home' %}">Mo's Blog</a></li> -->
+                <li class="fa fa-thumbs-up" aria-hidden="true" data-id="{{ like_obj.id }}" data-type="blog" data-action="like" title="Like">
+                    <span data-count="like">{{likes_count}}</li>
+                <li class="fa fa-thumbs-down" aria-hidden="true" data-id="{{ like_obj.id }}" data-type="blog" data-action="dislike" title="Dislike">
+                    <span data-count="dislike">{{dislikes_count}}</li>
+            </ul>
+            
+            <h2>Comments</h2>
+
+            <form method="post">
+            {% csrf_token %}
+            {% load widget_tweaks %}
+            {% for hidden_field in form.hidden_fields %}
+                {{ hidden_field }}
             {% endfor %}
+
+            {% if form.non_field_errors %}
+                <div class="alert alert-danger" role="alert">Danger alert</div>
+                {% for error in form.non_field_errors %}
+                    {{ error }}
+                {% endfor %}
+                </div>
+            {% endif %}
+            {% for field in form.visible_fields %}
+                <div class="form-group">
+                {{ field.label_tag }}
+                {% if form.is_bound %}
+                    {% if field.errors %}
+                        <div class="form-group has-error">
+                        {% render_field field class="form-control" %}
+                        </div>
+                        {% for error in field.errors %}
+                            <div class="errorlist">
+                                {{ error }}
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="form-group has-success">
+                            {% render_field field class="form-control" %}
+                        </div>
+                    {% endif %}
+                {% else %}
+                    {% render_field field class="form-control" %}
+                {% endif %}
+                {% if field.help_text %}
+                    <small class="form-text text-muted">{{ field.help_text }}</small>
+                {% endif %}
+                </div>
+            {% endfor %}
+                <button id = "sub" type = "submit">Submit</button>
+            </form>
+            <div id="l2comment">
+                {% for comment in comments %}
+                    <h2 id ="commentname">{{comment.Name}}</h2>
+                    <h4 id = "actualcomment">{{comment.comment}}</h3>
+                {% endfor %}
+            </div>
+            <!-- <div class = "col-sm-2">
+                    <h2>Users</h2>
+            </div>
+            -->
         </div>
     </div>
   {% endblock %}
-</html>
+
+  
+  {% block javascript %}
+
+  <script>$(document).ready(function() {
+    $('pre code').each(function(i, block) {
+      hljs.highlightBlock(block);
+    });
+  });
+  </script>
+
+
+
+
+<script>
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+</script>
+
+
+<script>
+$(function () {
+    $.ajaxSetup({
+        headers: { "X-CSRFToken": getCookie("csrftoken") }
+    });
+});
+</script>
+
+
+<!-- must be a way 2 test this like u can test python in shell...console? -->
+  <script>
+  function like()
+{
+    var like = $(this);//guessing like is a like object from Like model, assigning it to $(this) so that we can have jquery functionality for like object.
+    var type = like.data('type');     // https://api.jquery.com/data/  //this code uses second part on link .data(key)
+    var pk = like.data('id'); 
+    // pk = like_obj.id(data-id from html above) and like_obj.id i think is like_blogpost/comment.id in my case the id is defined by year month...
+    //like  = $(this) so we got $(this).like_obj.id
+    var action = like.data('action');
+    var dislike = like.next();
+    
+ 
+    $.ajax({
+        url: '{% url "home:blog_like" year=bpost.date.year month=bpost.date.month day=bpost.date.day slug=bpost.slug %}',
+        method : 'POST',
+        data : { 'obj' : pk }, // data to send to the server. Isnt this just the key/value pairing from data dicitionary in views?? i.e. obj = key , pk = values
+ 
+        success : function (json) {
+            like.find("[data-count='like']").text(json.like_count);
+            dislike.find("[data-count='dislike']").text(json.dislike_count);
+        }
+    });
+ 
+    return false;
+}
+ </script>
+ <script>
+function dislike()
+{
+
+    var dislike = $(this);
+    var type = dislike.data('type');
+    var pk = dislike.data('id');
+    var action = dislike.data('action');
+    var like = dislike.prev();
+ 
+    $.ajax({
+        url : '{% url "home:blog_dislike" year=bpost.date.year month=bpost.date.month day=bpost.date.day slug=bpost.slug %}',
+        method : 'POST',
+        data : { 'obj' : pk }, 
+        
+ 
+        success : function (json) {
+            dislike.find("[data-count='dislike']").text(json.dislike_count);
+            like.find("[data-count='like']").text(json.like_count);
+        }
+    });
+ 
+    return false;
+}
+</script>
+<script>
+$(function() {
+    $('[data-action="like"]').click(like);
+    $('[data-action="dislike"]').click(dislike);
+});
+  </script>
+  {% endblock %}
+  
+
+
+<!-- <ul>
+    <li data-id="{{ like_obj.id }}" data-type="blog" data-action="like" title="Like">
+        <span class="glyphicon glyphicon-thumbs-up"></span>
+        <span data-count="like">{{like_count}}{{ like_obj.votes.likes.count }}</span>
+    </li>
+    <li data-id="{{ like_obj.id }}" data-type="blog" data-action="dislike" title="Dislike">
+        <span class="glyphicon glyphicon-thumbs-down"></span>
+        <span data-count="dislike">{{dislike_count}}{{ like_obj.votes.dislikes.count }}</span>
+    </li>
+</ul>   -->

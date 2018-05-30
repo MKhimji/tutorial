@@ -1,0 +1,6 @@
+was trying to work out how to install a virtual env. One guy on his blog 
+wrote that you can create an env inside of your project directory using command line "virtualenv /nameofenv/" which
+creates an environment that is simply a directory that contains a complete copy of everything needed to run a Python program, 
+including a copy of the python binary itself, a copy of the entire Python standard library, a copy of the pip installer, and (crucially) a copy of the site-packages directory mentioned above.
+ When you install a package from PyPI using the copy of pip that's created by the virtualenv tool, it will install the package into the site-packages directory inside the virtualenv directory. 
+You can then use it in your program just as before.

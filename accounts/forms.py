@@ -155,3 +155,4 @@ class ChangePassword(PasswordChangeForm):
             )
         return old_password
 
+

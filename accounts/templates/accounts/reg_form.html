@@ -1,3 +1,7 @@
+<!-- 
+so at the moment user check is provided after pressing submit button but not actively whilst the user is typing
+need to make sure people dont have identical email addrewss -->
+
 {%extends 'base.html'%}
 
 {%block body%}
@@ -5,9 +9,9 @@
 <link href="/static/accounts/reg_form.css" type="text/css" rel="stylesheet">
 
 
-<div class="container">
 
-    <form method="post">
+<div class="container">
+    <form method="post" data-validate-username-url="{% url 'accounts:validate_username' %}">
       {% csrf_token %}
       {% load widget_tweaks %}
       {% for hidden_field in form.hidden_fields %}
@@ -50,8 +54,52 @@
 
       <button id = "sub" type = "submit">Submit</button>
     </form>
-
+    <a href="{% url 'accounts:login' %}">Login</a>
 </div>
 
+
+{% block javascript %}
+  <script>
+    $("#id_username").change(function () {
+      var form = $(this).closest("form");
+      $.ajax({
+        url: form.attr("data-validate-username-url"),
+        data: form.serialize(),
+        dataType: 'json',
+        success: function (data) {
+          if (data.is_taken) {
+            alert(data.error_message);
+          }
+        }
+      });
+
+    });
+  </script>
 {% endblock %}
 
+
+
+
+
+
+
+   <!-- <script>
+    $("#id_username").change(function () {
+      var form = $(this).closest("form");
+      $.ajax({
+        url: form.attr("data-validate-username-url"),
+        data: form.serialize(),
+        dataType: 'json',
+        error:function(data){
+          alert('A user with this username already exists.')
+            if (data.is_taken){} 
+            
+          
+        }
+      });
+
+    });
+  </script> -->
+
+
+{% endblock %}

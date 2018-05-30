@@ -14,8 +14,6 @@
     <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
     <div class="container">
         <div class = "col-md-10">
-            <div class ="well">
-            <img src="{{MEDIA_URL}}/{{bpost.pic}}">
             <h1 class="text-uppercase">{{ bpost.title }}</h1>
             <h3 id ="smallicons"><i id ="user" class="fa fa-user" aria-hidden="true"></i>
             <i id = "clock" class="fa fa-clock-o" aria-hidden="true"></i>{{bpost.date}}<i id = "comments" class="fa fa-comment" aria-hidden="true"></i> {{bpost.comment_set.count}} comments</h3>

@@ -1,0 +1,25 @@
+.container{
+    position:relative;
+    top:50px;
+    float:left;
+
+}
+
+
+.container h1{
+    font-family: 'Orbitron', sans-serif;
+    font-size:20px;
+    font-weight:bold;
+    position:relative;
+    margin-top:15px;
+    margin-bottom:15px;
+
+}
+
+.container p{
+    font-family: 'Orbitron', sans-serif;
+    font-size:12px;
+
+
+
+}

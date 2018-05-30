@@ -1,0 +1,138 @@
+https://docs.djangoproject.com/en/2.0/topics/db/queries/
+
+
+29 May 2018
+
+8.00
+
+Last boomarked on chrome got fix for keeping footer at bottom. Need to sort footers out other pages profile, edit profile change passowrd - include foooters sepearetely or what
+
+28 May 2018
+
+5.45 
+
+I feel more productive without music
+
+solved pagination problem : Used django pagination from docs + simplebetterthancomplex to paginate. Found that it was partially complete splution from comment.
+Followed link in comments to medium.com//sdasasfsdsfdsf found a solution(https://medium.com/@sumitlni/paginate-properly-please-93e7ca776432)  which involved something new
+
+    1.how to make  custom template tags. Had to make 2 template tags : i.proper_paginate.py and ii.link_name.py. more details in link above.
+    2. The paginator_template.html in the link above was written for cbv but i had a fbv. So i could have changed the fbv to cbv and adapted ( or at least tried). But i 
+    tried to mess with template and adapted by finding out the variables i had in my view to match the variables in my template by comparing it to the solution above. 
+
+    In that solution they use page_ob, is_paginated paginator.num_pages and anorther one i think and pass that to template whcih is what the solution 
+    does as that is a class based view. SO i have variable in my view all_posts which corresponds to allposts in template. so i replaced page_obj with allposts 
+    but that didnt work. Then realised they had paginator.num_pages as well so i put allposts.paginator.num_pages. But i kept  getting error 
+    /Attribute Error 'NoneType' object has no attribute 'num_pages' . The solution was to put 'paginator':paginator' in my args so i was failing to link the fact that paginator was
+    used as a variable in my view as well as the class based view in the solution. Remember the soltuion didnt post their view(CBV) . So relaly i just forgot to pass the 
+    variable to the template which I did by passing it as args to the render function in the view.
+
+6.03 
+
+Read more turn into button and below ...
+write blogposts for incomplete articles
+
+
+
+                
+
+27/05/18
+pagination - done   now write about it
+centered footer with position absolute margins and text-center
+spent 30 mins trying to find a solution to the problem :
+on home page footer appearing on bottom
+on full page footer appearing near topics
+looked inspect - container was going all the way to the bottom on blog.html as i was missing a ending div tag. 
+
+
+use postresql made for django
+
+IDEAS
+subscription???
+
+16th may
+TO DO: 
+1+2 from 15th may
+
+definitely need to sort mobile version out looks too small compared to other websites - had meta tag in base,html head but must have accidentally spllt viewport as viewrt so didnt work  - stupid mistaker
+apply readmore for mobile - gna have this as a box like on arseblog looks neater
+15TH may
+1.pagination on home page
+
+2.search ??? and sort options add no of views???
+
+3.create dynamic table to increase number of rows(column stays the same) each time a new blogpost is added. and fill the new row with the latest blogpost details i.e each column 
+will have blogpost, date and time published, (could add no of views after) - done
+
+
+
+13th may
+
+little project : atm on blog.html current slug is presented with dashes, write little program to remove dashes and capitalize first letter of each word. may have problems wit apostrophs etc
+didnt need to do this just changed .slug to .title in template - done 
+
+10th may
+
+
+
+footer on base.html. doesnt effect login.html as that does not extend base.html i think. style : contact/site map/
+you have to keep reflecting on what you've done otherwise you forget it. Life tip. - done
+
+
+can use {{ request.path }}
+{{ request.get_full_path }} to get current path, with li span a we can get path like home>blog>...but we need it so that the first link is the predecessor of the following link
+
+
+
+rule: 2 parts : 1. if on home page then just present home icons 2. if user clicks on link then present a list with the first icon as a link to home page, second link as the page the user is cuirrently on
+so its a dynamic list whose length depends on which page the user is on currently. O.
+
+1st may 18
+
+still using h3 on home.html. blog.html is correct way so need to sort the spacing on blog.html first and then just copy into home.html
+need to fill bottom with contact us, social icons, and coipyright message
+date based ARCHIVE filter queryset by date reply model? 
+add datetime to comment
+
+
+
+
+
+
+
+DOING TWO THINGS NOW
+
+FINDING WAY TO SAVE DATABASE CONTENT :
+
+SQLITE3?
+USE DJANGO ARCHIVE
+Can use pyhthon shell to query databse objects but what if i lose my hardware then i dont have a backup of ym database content as the databse content is not saved in github
+
+
+
+
+
+
+
+To do
+
+for blog posts :
+
+1) virtualenv on windows and envwrapper on mqwin64
+2) widget tweaks using finish dudes blog
+3) how to install python and django
+4) shortuct for conemu
+
+for project :
+
+1) remove include folder and djangoadmin.py from github repo.
+2) inline editing - true wysiwyg 
+
+
+Notes on black background website:
+
+6 months into my project I had a black background with white text. Here is one of the problems i came across during development. 
+ django-ckeditor is a WYSIWG editor which replaces the default django admin with a  option better for editing content. 
+ http://highlightjs.readthedocs.io/en/latest/style-guide.html#key-principle explains somat
+
+

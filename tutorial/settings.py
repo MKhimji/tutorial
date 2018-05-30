@@ -8,7 +8,7 @@ https://docs.djangoproject.com/en/1.11/topics/settings/
 
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
-"""
+""" 
 
 import os
 
@@ -34,7 +34,9 @@ INSTALLED_APPS = [
     'accounts',
     'home',
     'widget_tweaks',
-    'tinymce',
+    'ckeditor',
+    'ckeditor_uploader',
+    'django_archive',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -68,6 +70,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
+                
             ],
         },
     },
@@ -86,6 +89,8 @@ DATABASES = {
     }
 }
 
+DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
+DBBACKUP_STORAGE_OPTIONS = {'location': os.path.join(BASE_DIR, 'tutorial/backups')}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -124,15 +129,31 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'accounts/static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'tutorial/media')
+
+CKEDITOR_UPLOAD_PATH = 'Screenshots/'
+CKEDITOR_IMAGE_BACKEND = 'pillow'
+
+CKEDITOR_CONFIGS = {
+    'awesome_ckeditor': {
+        'toolbar': 'full',
+        'height': 300,
+        'width': 900,
+        
+    },
+}
+
 
 LOGIN_URL = '/account/login/'
 
 LOGIN_REDIRECT_URL = '/home/'
 
 LOGIN_EXEMPT_URLS = (
+    # r'^home/ajax/blogpostlikes/$',
+    r'^account/ajax/validate_username/$',
     r'^account/logout/$',
     r'^account/register/$',
     r'^account/reset-password/$',
@@ -148,7 +169,3 @@ EMAIL_PORT = 1025
 ##python -m smtpd -n -c DebuggingServer localhost:1025
 
 
-TINYMCE_JS_URL = '/media/tinymce/media/tiny_mce/tiny_mce.js'
-TINYMCE_JS_ROOT = os.path.join(BASE_DIR, 'tutorial/media/tinymce') 
-TINYMCE_DEFAULT_CONFIG = {'theme': "simple", 'relative_urls': False}
-TINYMCE_COMPRESSOR = True

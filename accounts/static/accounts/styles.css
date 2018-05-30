@@ -1,6 +1,13 @@
-*{
-    box-sizing: border-box;
-}
+html, 
+body {
+  height: 100%;
+} 
+ 
+ body {
+ padding-top: 90px; 
+} 
+
+
 
 .navbar.navbar-fixed-top{
     font-family: 'Orbitron', sans-serif;
@@ -8,42 +15,19 @@
     background-color:black;
     text-align:center;
     margin: 0px auto;
-    border:0px;
+    
 }
 
-#brand{
-    background-color:black;
-    font-family: 'Orbitron', sans-serif;
-    color:grey;
-    font-size:20px;
-}
-
-
-
-/* Why did i have the two below ? I think its because some of the filters that were  being applied to the right hand side of the navbar were
-also being applied to the  logo so i eliminated them
-*/
-
-#brand:hover{
-    -webkit-filter: none;
-
-}
-
-#brand:active{
-    -webkit-filter: none;
-
-}
 
 /*overwrite bootstrap standard to prevent navbar blocks turning white background on click*/
 
 
 
 ul.dropdown-menu{
-    position:absolute;
-    margin-top:-50px;
     height:118px;
     background-color:black;
     border:solid black 1px;
+    
 }
 
 ul.dropdown-menu li a:hover{
@@ -62,20 +46,73 @@ ul.dropdown-menu div #navhr {
 
 }
 
+/* style breadcrumbs remove bullets */
+
+li{
+    list-style-type: none;
+    padding-left: 0;
+   
+}​
+
+li a {
+    display: inline-block;
+    
+    
+} 
+
+
+
+/* Code icon LHS */
+
+
+#brand{
+    transition:ease 0.15s;
+    transition-duration:0.5s;
+}
+
+#brand:hover{
+    background-color:black;
+    -webkit-filter: brightness(400%);
+    filter: brightness(400%);
+}
+
+#brand:focus{
+    background-color:black;
+}
+
+#brand:not(:hover){
+    background-color:black;
+
+
+}
+
+
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0),rgb(51, 153, 255), rgba(0, 0, 0, 0));
+}
+
+
+
+
 .nav.navbar-nav.navbar-right li a{
     transition:ease 0.15s;
     transition-duration:0.5s;
-
 }
 
 .nav.navbar-nav.navbar-right li a:hover{
     background-color:black;
-}
-
-.nav.navbar-nav.navbar-right li a:focus{
-    background-color:black;
     -webkit-filter: brightness(400%);
     filter: brightness(400%);
+    
+}
+
+
+
+.nav.navbar-nav.navbar-right li a :focus{
+    background-color:black;
+
 }
 
 .nav.navbar-nav.navbar-right li a:not(:hover){
@@ -84,27 +121,150 @@ ul.dropdown-menu div #navhr {
 }
 
 
-/*.navbar-text{
-    color:white;
-    font-size:10px;
-    position:relative;
-    left:15px;
+
+
+/* top bar social */
+
+
+
+
+#social{
+    transition:ease 0.15s;
+    transition-duration:0.5s;
+    transition: transform .2s;
 }
 
-.navbar-text a:hover{
-    text-decoration:none;
+#social:hover{
     background-color:black;
-    -webkit-filter:  brightness(500%);
-    filter:  brightness(500%);
+    -webkit-filter: brightness(100%);
+    filter: brightness(100%);
+    transform: scale(1.5);
+
+    
 }
 
-.navbar-text a{
-    text-decoration:none;
-    transition:all linear 0.15s;
-}*/
 
-hr {
-    border: 0;
-    height: 1px;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0),rgb(51, 153, 255), rgba(0, 0, 0, 0));
+
+#social:focus{
+    background-color:black;
+
 }
+
+#social:not(:hover){
+    background-color:black;
+
+}
+
+
+#social img{
+    width:18px;
+    height:18px;
+    margin:10px;
+    top:20px;
+    left:30px;
+    }
+
+
+footer{
+    background-color: black;
+    position: absolute;
+    width: 100%;
+    text-align:center;
+}
+footer p{
+    font-family: 'Abel', sans-serif;
+    font-size:15px;
+    color:grey;
+    margin:0 auto;
+    padding:2px;
+    
+}
+
+/* Atm brand in correct place. arrow in centre on new line, need arrow in top right on same line, so need to write rule where if screen <768px then nav navbar-nav navbar-right shud have
+some property */
+@media only screen and (max-width: 768px) {
+
+.nav.navbar-nav.navbar-right{
+    margin:auto;
+}
+
+
+ul.dropdown-menu{
+    height: 100%;
+}
+
+}
+
+
+
+/* think grid rows and columns is to lay the whole page out without navbar and flexbox rpws is to lay out a sequenece of containers in a flexbox and line then aup and manipulate them in a row
+ */
+
+
+
+/* for original fixed footer with social icons  */.
+
+
+/* get imgs side by side */
+
+/* li{
+    list-style-type: none;
+    padding-left: 0;
+   
+}​
+
+li a {
+    display: inline-block;
+    
+    
+} */
+
+
+/*     
+.footer {
+    position:fixed;
+    left: 0;
+    bottom: 0px;
+    width: 100%;
+    height:40px;
+    background-color:black;
+    color:silver;
+    
+    
+}
+
+.footer img{
+    width:20px;
+    height:20px;
+    margin-top:20px;
+    transition: all .2s ease-in-out;
+    }
+
+.footer img:hover{
+        width:20px;
+        height:20px;
+        margin-top:20px;
+        transform: scale(1.2);
+}
+
+
+
+
+.text-center p{
+    font-family: 'Orbitron', sans-serif;
+    font-size:11px; 
+    padding:0px;
+    margin:0px;
+    position:relative;
+    top:5px;
+    
+    
+}
+
+.text-center{
+    position:relative;
+    padding:0px;
+    margin:0px;
+    bottom:4px;
+    
+} */
