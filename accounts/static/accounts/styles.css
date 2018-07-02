@@ -7,6 +7,11 @@ body {
  padding-top: 90px; 
 } 
 
+.container{
+    position:relative;
+    box-sizing: border-box;
+    min-height: 100vh;
+}
 
 
 .navbar.navbar-fixed-top{
@@ -21,10 +26,23 @@ body {
 
 /*overwrite bootstrap standard to prevent navbar blocks turning white background on click*/
 
+#lel{
+    
+    background-color: transparent;
+    border-color: #fff;
+    border-style: solid;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+}
+
+#lel li a:hover{
+    background-color:none;
+}
 
 
 ul.dropdown-menu{
-    height:118px;
+    
     background-color:black;
     border:solid black 1px;
     
@@ -51,11 +69,12 @@ ul.dropdown-menu div #navhr {
 li{
     list-style-type: none;
     padding-left: 0;
-   
+  
 }​
 
 li a {
     display: inline-block;
+    
     
     
 } 
@@ -91,6 +110,7 @@ hr {
     border: 0;
     height: 1px;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0),rgb(51, 153, 255), rgba(0, 0, 0, 0));
+    max-width:625px;
 }
 
 
@@ -165,12 +185,37 @@ hr {
     }
 
 
+
+
+#archive{
+    padding-top:25px;
+    font-family: 'Abel', sans-serif;
+
+    
+}
+
+
+
+@media only screen and (max-width: 768px) {
+  
+    #archive{
+        padding:0px;
+    
+    }
+
+    #menu{
+        margin:0 auto;
+    }
+
+}  
+
+
 footer{
     background-color: black;
     position: absolute;
     width: 100%;
     text-align:center;
-}
+    }
 footer p{
     font-family: 'Abel', sans-serif;
     font-size:15px;
@@ -178,93 +223,6 @@ footer p{
     margin:0 auto;
     padding:2px;
     
-}
-
-/* Atm brand in correct place. arrow in centre on new line, need arrow in top right on same line, so need to write rule where if screen <768px then nav navbar-nav navbar-right shud have
-some property */
-@media only screen and (max-width: 768px) {
-
-.nav.navbar-nav.navbar-right{
-    margin:auto;
-}
-
-
-ul.dropdown-menu{
-    height: 100%;
-}
-
-}
-
-
-
-/* think grid rows and columns is to lay the whole page out without navbar and flexbox rpws is to lay out a sequenece of containers in a flexbox and line then aup and manipulate them in a row
- */
-
-
-
-/* for original fixed footer with social icons  */.
-
-
-/* get imgs side by side */
-
-/* li{
-    list-style-type: none;
-    padding-left: 0;
-   
-}​
-
-li a {
-    display: inline-block;
-    
-    
-} */
-
-
-/*     
-.footer {
-    position:fixed;
-    left: 0;
-    bottom: 0px;
-    width: 100%;
-    height:40px;
-    background-color:black;
-    color:silver;
-    
-    
-}
-
-.footer img{
-    width:20px;
-    height:20px;
-    margin-top:20px;
-    transition: all .2s ease-in-out;
     }
 
-.footer img:hover{
-        width:20px;
-        height:20px;
-        margin-top:20px;
-        transform: scale(1.2);
-}
 
-
-
-
-.text-center p{
-    font-family: 'Orbitron', sans-serif;
-    font-size:11px; 
-    padding:0px;
-    margin:0px;
-    position:relative;
-    top:5px;
-    
-    
-}
-
-.text-center{
-    position:relative;
-    padding:0px;
-    margin:0px;
-    bottom:4px;
-    
-} */

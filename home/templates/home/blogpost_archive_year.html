@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Blog</title>
+<link href="/static/ckeditor/ckeditor/plugins/codesnippet/lib/highlight/styles/github.css" rel="stylesheet"/>
+<link href="/static/accounts/blogpost_archive_year.css" type="text/css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
+
+{% endblock %}
+
+{% block body %}
+    {% block first %}
+        <div class = "eznav">
+            <li>        
+                <span id = "bcrumb"><a href="{% url 'home:home' %}">Blog</a></span><i class="fa fa-angle-right fa-sm" aria-hidden="true"></i>
+                <span>{{ year|date:"Y" }}</span>
+            </li>
+        </div>
+    <!-- <ul>
+        {% for date in date_list %}
+            <li>{{ date|date }}</li>
+        {% endfor %}
+    </ul> --> 
+        <table border = "1"> 
+            <tr>
+                <th id="th1">Article</th>
+                <th id="th2">User</th>
+                <th id="th3">Date</th>
+            </tr>
+            <!-- <h1>All Articles for {{ year|date:"Y" }}</h1> -->
+            {% for obj in object_list %}
+            <tr>
+                <td><a href= "{% url 'home:view_blogpost_with_pk' year=obj.date.year month=obj.date.month day=obj.date.day slug=obj.slug %}">
+                    {{ obj.title }}</a></td>
+                <td><a href="{% url 'accounts:view_profile_with_pk' pk=obj.author.pk %}">{{obj.author|title}}</a></td>
+                <!-- "|title" is a django template function used to capitalize first letter just as the title() function is in python -->
+                <td>{{obj.date}}</td></tr>
+            {% endfor %}
+        </table>             
+    {% endblock %}            
+{% endblock %}       
+            
+       
+    </div>
+</div>
+
+
+
+
+
+<!--         
+                <tr>
+                    <th>Article</th>
+                    <th>User</th>
+                    <th>Date</th>
+                    
+                </tr>
+                {% for item in djangoarticles %}
+                <tr> 
+                    <td><a href= "{% url 'home:view_blogpost_with_pk' year=item.date.year month=item.date.month day=item.date.day slug=item.slug %}">{{item.title}}</a></td>
+                    <td><a href="{% url 'accounts:view_profile_with_pk' pk=item.author.pk %}">{{item.author}}</a></td>
+                    <td>{{item.date}}</td>
+                </tr>
+                {% endfor %}
+                - {{ obj.date|date:"F j, Y" }}
+            </table> -->
+
+

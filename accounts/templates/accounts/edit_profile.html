@@ -11,24 +11,26 @@
     <link href="https://fonts.googleapis.com/css?family=Saira" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
     <div class="container">
-        <h1 class = "text-uppercase">Edit Profile</h1>
-        <form method = "post">
-            {% csrf_token %}
-               {% load widget_tweaks %}
-                {% for hidden in form.hidden_fields %}
-                    {{ hidden }}
-                {% endfor %}
+        <div class = "col-md-10">
+            <h1 class = "text-uppercase">Edit Profile</h1>
+            <form method = "post">
+                {% csrf_token %}
+                {% load widget_tweaks %}
+                    {% for hidden in form.hidden_fields %}
+                        {{ hidden }}
+                    {% endfor %}
 
-                {% for field in form.visible_fields %}
-                    <div class="form-group">
-                     <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-                        {{ field|add_class:'form-control'}}
-                        {% for error in field.errors %}
-                            <span class="help-block">{{ error }}</span>
-                        {% endfor %}
-                    </div>
-                {% endfor %}
-            <button id = "sub" type = "submit">Submit</button>
-        </form>
+                    {% for field in form.visible_fields %}
+                        <div class="form-group">
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                            {{ field|add_class:'form-control'}}
+                            {% for error in field.errors %}
+                                <span class="help-block">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+                <button id = "sub" type = "submit">Submit</button>
+            </form>
+        </div>
     </div>
     {%endblock%}

@@ -10,6 +10,7 @@ from django.db.models import Sum
 
 
 
+
 class LikeManager(models.Manager):
     #https://docs.djangoproject.com/en/2.0/topics/db/managers/
     #Manager returns objects by querying database for every model eg Like.objects.all, can change to Like.likes.all() for example by saying likes = model.Manager() in Like model
@@ -77,6 +78,8 @@ class BlogPost(models.Model):
 
     def __str__(self):
         return "%s %s %s %s " %(self.title, self.author.username, self.author.first_name, self.author.last_name)
+
+
 
 
 class Comment(models.Model):

@@ -6,47 +6,37 @@
 
 
 
-/* body{
-    background: url(http://hdwallpapersrocks.com/wp-content/uploads/2013/12/Red-horizontal-thick-line-on-black-plain-background.jpg)no-repeat center center;
-    background-size:cover;
-    background-position: 0px 0px;
-
-} */
-
-
-/* .container{
-    position:relative;
-    overflow-y:auto;    
-
-} */
 
 .eznav{
     margin-bottom:50px;
     margin-top:40px;
-    color:grey;
+    color:rgb(156, 154, 154);
     font-family: 'Abel', sans-serif;
     font-size:15px;
-    
-
+    text-transform: uppercase;
 }
 
 #bcrumb{
     padding:2px;
 }
+
+
+#bcrumb a:hover{
+    text-decoration: none;
+    color:black;
+    transition-timing-function: ease-in-out;
+    transition-duration:0.1s;
+   
+    }
+
 #nonita{
     color:black;
-   
-}
-
-
-.col-md-10{
-    max-width:670px;
-    padding:0px;
     
 }
 
 
-.col-md-10 h1{
+
+#first h1{
     font-family: 'Abel', sans-serif;
     color: black;
     position:relative;
@@ -55,13 +45,13 @@
 
 }
 
-.col-md-10 h2{
+#first h2{
     font-family: 'Abel', sans-serif;
     font-size:24px;
     font-weight: bold;
 
 }
-.col-md-10 p{
+#first p{
     color:black;
     max-width:600px;
     word-wrap: break-word;
@@ -71,14 +61,14 @@
     
 
 
-.col-md-10 p a{
+#first p a{
     text-decoration: underline;
 
 }
 
 
 
-.col-md-10 h3 a:hover{
+#first a:hover{
     transition:ease-in 0.1s;
     text-decoration:none;
 
@@ -169,17 +159,20 @@ code{
 #users{
     font-family: 'Abel', sans-serif;
     font-size:13px;
+    text-transform: uppercase;
 }
 
 #clocks{
     font-family: 'Abel', sans-serif;
     font-size:13px;
+    text-transform: uppercase;
    
 }
 
 #comments{
     font-family: 'Abel', sans-serif;
     font-size:13px;
+    text-transform: uppercase;
     
 }
 
@@ -247,26 +240,18 @@ ul li{
 }
 
 
-
+#disqus_thread{
+    max-width:600px;
+}
+ 
 
 
 
 @media only screen and (max-width: 768px) {
   
 
-    .container{
-        margin:0 auto;
-        
-    }
-  
-    
-    .col-md-10 p{
-        word-break:keep-all;
-        overflow:hidden;
-    }
-
     .container form{
-        width:300px;
+        width:320px;
     }
     
     img{
@@ -276,4 +261,4 @@ ul li{
        
 
     }
-} 
+}  

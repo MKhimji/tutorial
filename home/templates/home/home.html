@@ -9,32 +9,24 @@
 <link href="/static/ckeditor/ckeditor/plugins/codesnippet/lib/highlight/styles/github.css" rel="stylesheet"/>
     
 {% endblock %}
+ 
 
+
+ 
 {% block body %}
-
-<div class = "container">
-    <div class = "col-md-10">
+    {% block first %}
         <div class = "eznav">
             <li>
                 <span id ="bcrumb"><a href="{% url 'home:home' %}">Blog</a></span><i class="fa fa-angle-right fa-sm" aria-hidden="true"></i>
             </li>
         </div>
-        <!-- <div class = "well">
-            {% load static %}
-            <img src="{% static "m2.png" %}"/>
-            <p>Hello! My name is Muhammad Khimji and I am an aspiring web app artist from Leicester, UK. This website was started because I wanted to share 
-                some features of django which make web development user friendly. I write about problems I had and how I solved them. I hope you enjoy your stay here and
-                learn something new
-            </p>
-        </div> -->
-        <!-- <div class ="well"> -->
         {% for p in allposts %}
-        <!-- <div class = "well"> -->
         <h1 class="text-uppercase"><a href="{% url 'home:view_blogpost_with_pk'  year=p.date.year month=p.date.month day=p.date.day slug=p.slug %}">
             {{p.title}}</a></h1>    
         <div id = "userclockcomment">
             <span id = "users"><i class="fa fa-user" aria-hidden="true"></i><a href="{% url 'accounts:view_profile_with_pk' pk=p.author.pk %}">
-                {{p.author.username}}</a></span>
+                {{p.author.username|title}}</a></span>
+                <!-- |title is django template function yo capitalize first letter of username -->
             <span id = "clocks"><i class="fa fa-clock-o" aria-hidden="true"></i>{{p.date}}</span>
             <span id = "comments"><i class="fa fa-comment" aria-hidden="true"></i><a href= "{% url 'home:view_blogpost_with_pk' year=p.date.year month=p.date.month day=p.date.day slug=p.slug %}#wellcomments"></a> {{p.comment_set.count}} comments</span>      
         </div>                             
@@ -42,31 +34,7 @@
         <a id= "readmore" href="{% url 'home:view_blogpost_with_pk' year=p.date.year month=p.date.month day=p.date.day slug=p.slug %}"><button type = "button">Read more</button></a>
         <hr id = "horizontalrule">
         <br>
-        <!--well </div> -->
         {% endfor %}
-        
-        <!-- {% if allposts.has_other_pages %}
-            <ul class="pagination">
-                {% if allposts.has_previous %}
-                    <li><a href="?page={{allposts.previous_page_number }}">&laquo;</a></li>
-                {% else %}
-                    <li class="disabled"><span>&laquo;</span></li>
-                {% endif %}
-                {% for i in allposts.paginator.page_range %}
-                    {% if allposts.number == i %}
-                        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
-                    {% else %}
-                        <li><a href="?page={{ i }}">{{ i }}</a></li>
-                    {% endif %}
-                {% endfor %}
-                {% if allposts.has_next %}
-                    <li><a href="?page={{ allposts.next_page_number }}">&raquo;</a></li>
-                {% else %}
-                    <li class="disabled"><span>&raquo;</span></li>
-                {% endif %}
-            </ul>
-        {% endif %} -->
-           
         {% if allposts.has_other_pages %}
             {% load proper_paginate %}
             {% load link_name %}
@@ -100,15 +68,10 @@
                 {% endif %}
             </ul>
         {% endif %}
-                   
-
-    </div>
-</div>
-
-
-
-
-{%endblock%}
+        {% block second %}
+        {% endblock %}
+        {% endblock %}      
+{% endblock %}
 
 
 {% block javascript %}
@@ -117,6 +80,5 @@
     hljs.highlightBlock(block);
   });
 });</script>
-
 {% endblock %}
 

@@ -6,47 +6,46 @@
 
 
 
-
-
-.container{
-    position:relative;
-    box-sizing: border-box;
-    min-height: 100vh;
-}
+ 
 
 /* breadcrumbs */
 
 .eznav{
     margin-bottom:50px;
     margin-top:40px;
-    color:grey;
+    color:rgb(156, 154, 154);
     font-family: 'Abel', sans-serif;
     font-size:15px;
-    
-
+    text-transform: uppercase;
 }
+
 #bcrumb{
-    padding:2px;
+    padding:2px;  
 }
 
 
-.col-md-10{
-    max-width:670px;
-    padding:0px;
-    
-}
+#bcrumb a:hover{
+    text-decoration: none;
+    color:black;
+    transition-timing-function: ease-in-out;
+    transition-duration:0.1s;
+    }
 
 
-.col-md-10 h1 a{
+
+
+#first h1 a{
     font-family: 'Abel', sans-serif;
-    color: black;
+    color:black;
     position:relative;
     font-size: 30px;
+    text-decoration:none;
 
 }
 
 
-.col-md-10 p{
+
+#first p{
     color:black;
     max-width:600px;
     word-wrap: break-word;
@@ -55,39 +54,36 @@
 }
 
 
-
-.col-md-10 p a{
+#first p a{
     text-decoration: underline;
 
 }
-/* button {
-    background-color:rgba(102, 255, 255,0.1);
-    background-repeat:no-repeat;
-    border: aqua;
-    cursor:pointer;
-    overflow: hidden;
-    outline:transparent;
-    
-} */
+
+
 
 
 button{    
-    background-color:rgba(102, 255, 255,0.1);
-    padding:2px;
+    background-color:rgba(133, 253, 253, 0.1);
+    padding-top:1px;
+    padding-bottom: 1px;
     border-style: solid;
     border-color:rgba(25, 196, 196,0.1);
+    text-transform: uppercase;
     
 }
 
 button:hover{
-    border-color:rgb(171, 250, 250);
+    border-color:rgb(205, 243, 243);
+    transition:ease 0.7s;
+    transition-duration:0.3s;
 }
 
 #readmore{
     
     color:black;
     font-family: 'Abel', sans-serif;
-    font-size:14px;
+    font-size:13px;
+    
 }
 
 
@@ -96,10 +92,7 @@ button:hover{
     
 } 
 
-/* .well{
-    background-color:rgba(28, 126, 126, 0.1)
 
-} */
 /*code*/
 
 pre{
@@ -140,15 +133,14 @@ code{
 /*user clock comment icons*/
 
 .fa-user{
-    font-size:10px;
-    color:black;
+    font-size:8px;
     margin-right:2px;
+    
     
 }
 
 .fa-clock-o{
-    font-size:10px;
-    color: black;
+    font-size:8px;
     margin-left:6px;
     margin-right:5px;
 
@@ -156,8 +148,7 @@ code{
 
 
 .fa-comment{
-    font-size:10px;
-    color:black;
+    font-size:8px;
     margin-left:5px;
     margin-right:2px;
 }
@@ -172,17 +163,28 @@ code{
 
 #users{
     font-family: 'Abel', sans-serif;
-    font-size:13px;
+    font-size:12px;
+    text-transform: uppercase;
+    
+    
+   
+}
+
+#users a:hover{
+    text-decoration: none;
+
 }
 
 #clocks{
     font-family: 'Abel', sans-serif;
-    font-size:13px;
+    font-size:12px;
+    text-transform: uppercase;
 }
 
 #comments{
     font-family: 'Abel', sans-serif;
-    font-size:13px;
+    font-size:12px;
+    text-transform: uppercase;
     
 }
 
@@ -193,22 +195,11 @@ Orange is the border
 Red is the margin */
 
 
-@media only screen and (max-width: 768px) {
-  
-
-.container{
-    margin:0 auto;
-    }
-
-
-.col-md-10 p{
-    word-break: keep-all;
-    overflow:hidden;
-  }
+ @media only screen and (max-width: 768px) {
   
 
     
-}
+} 
 
 
 

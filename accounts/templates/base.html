@@ -11,102 +11,90 @@
     
     <meta charset="utf-8">
     
-    {%block head%}
+    {% block head %}
     <title>Home</title>
-    {%endblock%}
-<!--     
-  <div class = "nav-wrapper">
-      <div class = "brand-wrapper">
-        <a id = "brand" href="{% url 'home:home' %}"><i class="fa fa-code fa-lg"  aria-hidden="true"></i></a>
-      </div>
-      <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-caret-down fa-lg" aria-hidden="true"></i></a>
-        <ul class= "dropdown-menu">    
-            <div class="w3-container w3-center w3-animate-left">
-            <hr id="navhr">
-            </div>
-            <li><a href="{% url 'accounts:view_profile' %}">Profile</a></li>
-            <li><a href="{% url 'accounts:edit_profile' %}">Edit Profile</a></li>
-            <li><a href="{% url 'accounts:change_password' %}">Change Password</a></li>
-            <li><a href="{% url 'accounts:logout' %}">Log out</a></li>
-        </ul>
-      </li>
-   -->
- 
-  <!-- </div>   -->
-
-  <body>
-   <nav class="navbar navbar-fixed-top">
-    <div class="container-fluid">
-        {% if user.is_authenticated %}
-        <div class="navbar-header">
-            <div class="navbar-brand">
-            {% load static %}
-                <a id = "brand" href="{% url 'home:home' %}"><i class="fa fa-code fa-lg"  aria-hidden="true"></i></a>
-            <!-- <img src="{% static "m2.png" %}"/> -->
-            </div>
-        </div>
-        
-        <ul class="nav navbar-nav navbar-right">   
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-caret-down fa-lg" aria-hidden="true"></i></a>
-                <ul class="dropdown-menu">
-                    <div class="w3-container w3-center w3-animate-left">
-                    <hr id="navhr">
-                    </div>
-                    <li><a href="{% url 'accounts:view_profile' %}">Profile</a></li>
-                    <li><a href="{% url 'accounts:edit_profile' %}">Edit Profile</a></li>
-                    <li><a href="{% url 'accounts:change_password' %}">Change Password</a></li>
-                    <li><a href="{% url 'accounts:logout' %}">Log out</a></li>
-                </ul>
-            </li>
-        </ul>
-      
-            {% endif %}   
-    </div>
-   </nav>
-
-    {% block body %}   
     {% endblock %}
 
-<script
-src="https://code.jquery.com/jquery-3.1.1.min.js"
-integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script src="https://use.fontawesome.com/cdfd602f6e.js"></script>
-<script src="/static/ckeditor/ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js"></script>
+    <body>
+        <nav class="navbar navbar-fixed-top">
+         <div class="container-fluid">
+            {% if user.is_authenticated %}
+             <div class="navbar-header">
+                 <div class="navbar-brand">
+                 {% load static %}
+                     <a id = "brand" href="{% url 'home:home' %}"><i class="fa fa-code fa-lg"  aria-hidden="true"></i></a>
+                 <!-- <img src="{% static "m2.png" %}"/> -->
+                 </div>
+             </div>
+             
+             <ul class="nav navbar-nav navbar-right">   
+                 <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-caret-down fa-lg" aria-hidden="true"></i></a>
+                     <ul class="dropdown-menu">
+                         <div class="w3-container w3-center w3-animate-left">
+                         <hr id="navhr">
+                         </div>
+                         <li><a href="{% url 'accounts:view_profile' %}">Profile</a></li>
+                         <li><a href="{% url 'accounts:edit_profile' %}">Edit Profile</a></li>
+                         <li><a href="{% url 'accounts:change_password' %}">Change Password</a></li>
+                         <li><a href="{% url 'accounts:logout' %}">Log out</a></li>
+                     </ul>
+                 </li>
+             </ul>
+           
+            {% endif %}   
+         </div>
+        </nav>
 
-{% block javascript %}
-{% endblock %}
-<!-- dataicon = False removes arrows between links -->
-   <!-- <div class = "block">
-    <div class = "listy">
-        <li>
-            <span data-icon="false"><a id = "social" href = "http://www.facebook.com"><img src="{% static "set/facebook.png" %}"/></span> 
-            <span data-icon="false"><a id = "social" href = "http://www.twitter.com"><img src="{% static "set/twitter.png" %}"/></span>
-            <span data-icon="false"><a id = "social" href = "http://www.youtube.com"><img src="{% static "set/youtube.png" %}"/></span>
-            <span data-icon="false"><a id = "social" href = "http://www.linkedin.com"><img src="{% static "set/linkedin.png" %}"/></span>            
-        </li>
-    </div> -->
-    <!-- <footer class="container-fluid footer">
-            <div class="text-center">
-                <li>
-                    <p>© MRK 2018</p>
-                    <span data-icon="false"><a id = "social" href = "http://www.facebook.com"><img src="{% static "set/facebook.png" %}"/></a></span> 
-                    <span data-icon="false"><a id = "social" href = "http://www.twitter.com"><img src="{% static "set/twitter.png" %}"/></a></span>
-                    <span data-icon="false"><a id = "social" href = "http://www.googleplus.com"><img src="{% static "set/google+.png" %}"/></span>
-                    <span data-icon="false"><a id = "social" href = "http://www.linkedin.com"><img src="{% static "set/linkedin.png" %}"/></a></span>            
-                </li>
+        <div class = "row">
+            <div class="container"> 
+                <div id = "first" class ="col-md-10">
+                    {% block first %}{% endblock %}
+                </div>
+                <div id = "second" class = "col-md-2">
+                    <h1 id = "archive">ARCHIVE</h1>
+                    <hr>
+                        <select name="menu" id="selection">
+                            <option selected disabled>Select Month</option>
+                            {% for i,v in s %}
+                               <option value="{% url 'home:blogpost_month_archive' year=v month=i %}"><a href="{% url 'home:blogpost_month_archive' year=v month=i %}">{{i}} {{v}}</a></option>
+                            {% endfor %}   
+                        </select>
+                    <hr>
+            
+                </div>
             </div>
-    </footer> -->
-    <footer id = "lel2">
-        <p>© MRK 2018</p>
-    </footer>
- </body>
+        </div>
+       
+
+              
+                
 
 
-    
+
+
+          
+       
+        <script
+        src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script src="https://use.fontawesome.com/cdfd602f6e.js"></script>
+        <script src="/static/ckeditor/ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $("#selection").change(function() {
+                    location = $("#selection option:selected").val();
+                });
+            });
+        </script>
+        {% block javascript %}
+        {% endblock %}
+        <footer>
+            <p>© MRK 2018</p>
+        </footer>
+    </body>
 </html>
 
 

@@ -13,101 +13,66 @@
   {% endblock %}
 
   {% block body %}
-
-  
-
-  
-    <div class="container">
-
-        <div class = "col-md-10">
-            <div class = "eznav">
-                <li>        
-                    <span id = "bcrumb"><a href="{% url 'home:home' %}">Blog</a></span><i class="fa fa-angle-right fa-sm" aria-hidden="true"></i>
-                    <span id = "nonita">{{bpost.title}}</span>
-                </li>
-            </div>
-            
-            <h1 class="text-uppercase">{{ bpost.title }}</h1>
-    
-            <div id = "userclockcomment">
-                <span id = "users"><i class="fa fa-user" aria-hidden="true"></i> <a href="{% url 'accounts:view_profile_with_pk' pk=bpost.author.pk %}">
-                {{bpost.author.username}}</a></span>
-                <span id = "clocks"><i class="fa fa-clock-o" aria-hidden="true"></i>{{bpost.date}}</span>
-                <span id = "comments"><i class="fa fa-comment" aria-hidden="true"></i>
-                <a href= "{% url 'home:view_blogpost_with_pk' year=bpost.date.year month=bpost.date.month day=bpost.date.day slug=bpost.slug %}#l2comment"> 
-                {{bpost.comment_set.count}} comments</a></span>      
-            </div>     
-           
-            <p>{{bpost.body|safe}}</p>
-            
-            <ul>
-                <!-- <li><a href="{% url 'home:home' %}">Mo's Blog</a></li> -->
-                <li class="fa fa-thumbs-up" aria-hidden="true" data-id="{{ like_obj.id }}" data-type="blog" data-action="like" title="Like">
-                    <span data-count="like">{{likes_count}}</li>
-                <li class="fa fa-thumbs-down" aria-hidden="true" data-id="{{ like_obj.id }}" data-type="blog" data-action="dislike" title="Dislike">
-                    <span data-count="dislike">{{dislikes_count}}</li>
-            </ul>
-            
-            <h2>Comments</h2>
-
-            <form method="post">
-            {% csrf_token %}
-            {% load widget_tweaks %}
-            {% for hidden_field in form.hidden_fields %}
-                {{ hidden_field }}
-            {% endfor %}
-
-            {% if form.non_field_errors %}
-                <div class="alert alert-danger" role="alert">Danger alert</div>
-                {% for error in form.non_field_errors %}
-                    {{ error }}
-                {% endfor %}
-                </div>
-            {% endif %}
-            {% for field in form.visible_fields %}
-                <div class="form-group">
-                {{ field.label_tag }}
-                {% if form.is_bound %}
-                    {% if field.errors %}
-                        <div class="form-group has-error">
-                        {% render_field field class="form-control" %}
-                        </div>
-                        {% for error in field.errors %}
-                            <div class="errorlist">
-                                {{ error }}
-                            </div>
-                        {% endfor %}
-                    {% else %}
-                        <div class="form-group has-success">
-                            {% render_field field class="form-control" %}
-                        </div>
-                    {% endif %}
-                {% else %}
-                    {% render_field field class="form-control" %}
-                {% endif %}
-                {% if field.help_text %}
-                    <small class="form-text text-muted">{{ field.help_text }}</small>
-                {% endif %}
-                </div>
-            {% endfor %}
-                <button id = "sub" type = "submit">Submit</button>
-            </form>
-            <div id="l2comment">
-                {% for comment in comments %}
-                    <h2 id ="commentname">{{comment.Name}}</h2>
-                    <h4 id = "actualcomment">{{comment.comment}}</h3>
-                {% endfor %}
-            </div>
-            <!-- <div class = "col-sm-2">
-                    <h2>Users</h2>
-            </div>
-            -->
+    {% block first %}
+        <div class = "eznav">
+            <li>        
+                <span id = "bcrumb"><a href="{% url 'home:home' %}">Blog</a></span><i class="fa fa-angle-right fa-sm" aria-hidden="true"></i>
+                <span id = "nonita">{{bpost.title}}</span>
+            </li>
         </div>
-    </div>
-  {% endblock %}
+        
+        <h1 class="text-uppercase">{{ bpost.title }}</h1>
+
+        <div id = "userclockcomment">
+            <span id = "users"><i class="fa fa-user" aria-hidden="true"></i> <a href="{% url 'accounts:view_profile_with_pk' pk=bpost.author.pk %}">
+            {{bpost.author.username|title}}</a></span>
+            <span id = "clocks"><i class="fa fa-clock-o" aria-hidden="true"></i>{{bpost.date}}</span>
+            <span id = "comments"><i class="fa fa-comment" aria-hidden="true"></i>
+            <a href= "{% url 'home:view_blogpost_with_pk' year=bpost.date.year month=bpost.date.month day=bpost.date.day slug=bpost.slug %}#l2comment"> 
+            {{bpost.comment_set.count}} comments</a></span>      
+        </div>     
+        
+        <p>{{bpost.body|safe}}</p>
+        
+        <ul>
+            <!-- <li><a href="{% url 'home:home' %}">Mo's Blog</a></li> -->
+            <li class="fa fa-thumbs-up" aria-hidden="true" data-id="{{ like_obj.id }}" data-type="blog" data-action="like" title="Like">
+                <span data-count="like">{{likes_count}}</li>
+            <li class="fa fa-thumbs-down" aria-hidden="true" data-id="{{ like_obj.id }}" data-type="blog" data-action="dislike" title="Dislike">
+                <span data-count="dislike">{{dislikes_count}}</li>
+        </ul>
+        
+
+
+        <div id="disqus_thread"></div>
+    {% endblock %}
+    {% block second %}
+    {% endblock %}
+{% endblock %}
 
   
   {% block javascript %}
+
+
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+var disqus_config = function () {
+this.page.url = blogpost.id = 1;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = "{% url 'home:view_blogpost_with_pk' year=bpost.date.year month=bpost.date.month day=bpost.date.day slug=bpost.slug %}"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://muhammad-7.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
   <script>$(document).ready(function() {
     $('pre code').each(function(i, block) {
@@ -115,6 +80,7 @@
     });
   });
   </script>
+
 
 
 
@@ -205,17 +171,11 @@ $(function() {
     $('[data-action="dislike"]').click(dislike);
 });
   </script>
+
+
+
+
   {% endblock %}
   
 
 
-<!-- <ul>
-    <li data-id="{{ like_obj.id }}" data-type="blog" data-action="like" title="Like">
-        <span class="glyphicon glyphicon-thumbs-up"></span>
-        <span data-count="like">{{like_count}}{{ like_obj.votes.likes.count }}</span>
-    </li>
-    <li data-id="{{ like_obj.id }}" data-type="blog" data-action="dislike" title="Dislike">
-        <span class="glyphicon glyphicon-thumbs-down"></span>
-        <span data-count="dislike">{{dislike_count}}{{ like_obj.votes.dislikes.count }}</span>
-    </li>
-</ul>   -->
