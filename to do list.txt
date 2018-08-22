@@ -1,0 +1,270 @@
+https://docs.djangoproject.com/en/2.0/topics/db/queries/
+26.6.18
+installed django debug toolbar
+what would need to be cached?
+
+for example when user clicks on profile the view_profile in accounts is run and then the accounts/profuile.html is rendered. the view has a get and the template is listing
+properties of the user object.
+
+
+
+25.6.18
+use django sessions / cache for hitcount
+shotern width of <code>
+navbar still fked
+
+21.6.18
+
+share this article next to like buttons 
+need to 
+20.6.18
+Consider adding indexes to fields that you frequently query using filter(), exclude(), order_by(), etc. as indexes may help to speed up lookups. Note that determining the best indexes is a complex database-dependent topic that will depend 
+on your particular application. 
+The overhead of maintaining an index may outweigh any gains in query speed.
+
+
+
+https://docs.djangoproject.com/en/1.11/topics/db/optimization/
+
+need to change to postregresql
+
+does pagination reduce server load? 
+
+incredibly badly structured relational database (many of our queries JOIN 7 or 8 different tables to get a result).
+
+just installed disqus. Dont remove comment model until fully tested.
+
+Need to adjust media rule for navbar
+
+
+19.6.18
+
+writing django blogpost on creating archive made me think about how querysets actually work. So am querying the database to retrieve the time of a blogpost. or even more simpler 
+doing x = blogpost.objects.all(). I think creating a queryset doesnt hit the database at all. Why did django make this sound amazing on the documentation? use django debug toolabr to see how much 
+times ur hittng the database.
+
+15.6.18
+
+Django doesnt hit the database until you call save
+
+>>> from blog.models import Blog
+>>> b = Blog(name='Beatles Blog', tagline='All the latest Beatles news.')
+>>> b.save()  
+
+
+
+14.6.18 - DONE
+
+2 ways to represent month year on all pages:
+
+tried doing for loop which works but cant represent all of the months and years yet
+tried using django templating language date filter but uses view variable allposts which i would have to define in everypage but cant 
+present them in accounts as it isnt home model. 
+
+
+Using for loop in view means i have to define all blogposts in every view and anyway i dont know how to present the list correctly yet. I can 
+make an undistinct list in shell though
+
+Using a for loop in template base.html is difficult because it doesnt work on all different pages.
+
+completed  - created a template context processor. so one view takes a context and can be used in all templates need to write about it.
+
+
+
+12.6.18
+container overlapping navbar
+
+
+8.6.16
+felxbox until sunday night max then go back to old layout
+
+
+6.6.18
+starting poitn for archvie display is so post and alsoew thjus 
+
+                    <!-- {% for x in allposts %}
+                {{x.date.year}}
+                {% endfor %} -->
+                <!-- <li><a href="{% url 'home:blogpost_year_archive' year=2018 %}"></a>{{ year|date:"Y" }}</a></li> -->
+
+4.6.18
+
+Padding left to get col md 2 to RHS means mobile layout becomes fked up. dont know how 2 solve this yet.
+
+convert datetime queryset to just the year. to include t which is defined in def(home) in all other pages means i have to define t in every view wghich
+is wrong. So i need to use template context processor or somat. Cant do it current way as i have one variable t representing many dates so i cant link each of them
+use solution last bookmarked which does the template context processor ting and does the template.
+
+cant really add padding media rule as it would be different for every size device.
+
+
+
+
+2.6.18
+
+7.26
+"|title" is a django template function used to capitalize first letter just as the title() function is in python. Without lookin for solution on google i 
+went to shell did x= blogpost.objects.all() x[0] = <User:heliuM> so tried to isolate the heliuM by doing x.author.username then did x.author.username.title() and it
+worked so i thought which model should i modify the user model or blogpost model. user model is built in so i thought id mess with the blogpost model
+and tried to return the str 
+
+
+get navbar on one line and when expand menu create overlay with anuimation so it comes in from the side, covers the whole page,,, 
+have the 4 links and then 4 more social links on bottom
+of navbar
+
+pylint errors...is it really a big deal if it still works dont spend 2 much time on it find out how important it relaly is to solve first.
+
+
+i dont think my site is mobile first but i am trying to make it mobile friendly. since i started desgnoing only for desktop then adpated to mobile.
+
+just realised i need to put all the stuff on roight side of page(whcih will appear block by block on mnobile underneath one another) on base.html but i aint got 
+col-md-10 on base.html so i really need to think through what i need to change. Because otherwuse i will be repeating my code on all pages.
+Need to add col-md-10 and col sm 2 on everpage
+
+
+31 may 2018
+finish paginate article. archive on home page by year and month
+https://learn.onemonth.com/2015/05/
+the wire
+
+pc problem - all of a sudden alt tabbing freezes game, taskbar color changed + maximizing youtube video pauses for a sec
+
+
+29 May 2018
+
+8.00
+
+Last boomarked on chrome got fix for keeping footer at bottom. Need to sort footers out other pages profile, edit profile change passowrd - include foooters sepearetely or what
+styling container fixed the issue of footer appearing just below content on blog.html pages as when there was a half a page for exmaple the footer waould appear just below thelast 
+of the content and not right at the bottom . Now need to edit profile edit profile and change passwowrd pages so that it contains a container which i can style similarly. - done
+
+28 May 2018
+
+5.45 
+
+I feel more productive without music
+
+solved pagination problem : Used django pagination from docs + simplebetterthancomplex to paginate. Found that it was partially complete splution from comment.
+Followed link in comments to medium.com//sdasasfsdsfdsf found a solution(https://medium.com/@sumitlni/paginate-properly-please-93e7ca776432)  which involved something new
+
+    1.how to make  custom template tags. Had to make 2 template tags : i.proper_paginate.py and ii.link_name.py. more details in link above.
+    2. The paginator_template.html in the link above was written for cbv but i had a fbv. So i could have changed the fbv to cbv and adapted ( or at least tried). But i 
+    tried to mess with template and adapted by finding out the variables i had in my view to match the variables in my template by comparing it to the solution above. 
+
+    In that solution they use page_ob, is_paginated paginator.num_pages and anorther one i think and pass that to template whcih is what the solution 
+    does as that is a class based view. SO i have variable in my view all_posts which corresponds to allposts in template. so i replaced page_obj with allposts 
+    but that didnt work. Then realised they had paginator.num_pages as well so i put allposts.paginator.num_pages. But i kept  getting error 
+    /Attribute Error 'NoneType' object has no attribute 'num_pages' . The solution was to put 'paginator':paginator' in my args so i was failing to link the fact that paginator was
+    used as a variable in my view as well as the class based view in the solution. Remember the soltuion didnt post their view(CBV) . So relaly i just forgot to pass the 
+    variable to the template which I did by passing it to args in view
+
+6.03 
+
+Read more turn into button and below ...
+write blogposts for incomplete articles
+
+
+
+                
+
+27/05/18
+pagination - done   now write about it
+centered footer with position absolute margins and text-center
+spent 30 mins trying to find a solution to the problem :
+on home page footer appearing on bottom
+on full page footer appearing near topics
+looked inspect - container was going all the way to the bottom on blog.html as i was missing a ending div tag. 
+
+
+use postresql made for django
+
+IDEAS
+subscription???
+
+16th may
+TO DO: 
+1+2 from 15th may
+
+definitely need to sort mobile version out looks too small compared to other websites - had meta tag in base,html head but must have accidentally spllt viewport as viewrt so didnt work  - stupid mistaker
+apply readmore for mobile - gna have this as a box like on arseblog looks neater
+15TH may
+1.pagination on home page
+
+2.search ??? and sort options add no of views???
+
+3.create dynamic table to increase number of rows(column stays the same) each time a new blogpost is added. and fill the new row with the latest blogpost details i.e each column 
+will have blogpost, date and time published, (could add no of views after) - done
+
+
+
+13th may
+
+little project : atm on blog.html current slug is presented with dashes, write little program to remove dashes and capitalize first letter of each word. may have problems wit apostrophs etc
+didnt need to do this just changed .slug to .title in template - done 
+
+10th may
+
+
+
+footer on base.html. doesnt effect login.html as that does not extend base.html i think. style : contact/site map/
+you have to keep reflecting on what you've done otherwise you forget it. Life tip. - done
+
+
+can use {{ request.path }}
+{{ request.get_full_path }} to get current path, with li span a we can get path like home>blog>...but we need it so that the first link is the predecessor of the following link
+
+
+
+rule: 2 parts : 1. if on home page then just present home icons 2. if user clicks on link then present a list with the first icon as a link to home page, second link as the page the user is cuirrently on
+so its a dynamic list whose length depends on which page the user is on currently. O.
+
+1st may 18
+
+still using h3 on home.html. blog.html is correct way so need to sort the spacing on blog.html first and then just copy into home.html
+need to fill bottom with contact us, social icons, and coipyright message
+date based ARCHIVE filter queryset by date reply model? 
+add datetime to comment
+
+
+
+
+
+
+
+DOING TWO THINGS NOW
+
+FINDING WAY TO SAVE DATABASE CONTENT :
+
+SQLITE3?
+USE DJANGO ARCHIVE
+Can use pyhthon shell to query databse objects but what if i lose my hardware then i dont have a backup of ym database content as the databse content is not saved in github
+
+
+
+
+
+
+
+To do
+
+for blog posts :
+
+1) virtualenv on windows and envwrapper on mqwin64
+2) widget tweaks using finish dudes blog
+3) how to install python and django
+4) shortuct for conemu
+
+for project :
+
+1) remove include folder and djangoadmin.py from github repo.
+2) inline editing - true wysiwyg 
+
+
+Notes on black background website:
+
+6 months into my project I had a black background with white text. Here is one of the problems i came across during development. 
+ django-ckeditor is a WYSIWG editor which replaces the default django admin with a  option better for editing content. 
+ http://highlightjs.readthedocs.io/en/latest/style-guide.html#key-principle explains somat
+
+
