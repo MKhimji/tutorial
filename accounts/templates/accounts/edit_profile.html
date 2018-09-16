@@ -4,9 +4,10 @@
 
     {% block head %}
     <title>Edit Profile</title>
-    {%endblock%}
+    {% endblock %}
 
-    {%block body%}
+    {% block body %}
+    {% block first %}
     <link href="/static/accounts/edit_profile.css" type="text/css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Saira" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
@@ -33,4 +34,8 @@
             </form>
         </div>
     </div>
-    {%endblock%}
+    {% block second %}
+    {% endblock %}
+    {% endblock %}
+    {% endblock %}
+   

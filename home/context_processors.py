@@ -7,6 +7,12 @@ def blogposts_processor(request):
 
     return {'blogposts': blogposts,'s':s}
 
+# def tags_processor(request):
+#     blogposts = BlogPost.objects.all()
+#     x = BlogPost.objects.filter(tags__name__in=["git"])
+
+#     return {'blogposts': blogposts,'x':x}
+
 # for i in y:
 #     i.strftime('%b'),i.strftime('%Y')
 

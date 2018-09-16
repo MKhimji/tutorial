@@ -41,7 +41,21 @@
             <li class="fa fa-thumbs-down" aria-hidden="true" data-id="{{ like_obj.id }}" data-type="blog" data-action="dislike" title="Dislike">
                 <span data-count="dislike">{{dislikes_count}}</li>
         </ul>
+       
+        {% load taggit_templatetags2_tags %}
+        {% get_tags_for_object bpost as "tags" %}
         
+        <ul>
+            {% for tag in tags %}
+            <li><a href="{% url 'home:taggd' tag=tag %}">{{tag}}</a></li>
+            
+            {% endfor %}
+        </ul>
+       
+       
+        <!-- <div id = "tagz">
+            <a>{{t|join:" "}}</a>
+        </div> -->
 
 
         <div id="disqus_thread"></div>

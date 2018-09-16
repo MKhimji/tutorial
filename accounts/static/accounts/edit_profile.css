@@ -1,21 +1,22 @@
 
-
-.container{
-    position:relative;
-    box-sizing: border-box;
-    min-height: 100vh;
-}
-.container h1{
+ .container h1{
     font-family: 'Orbitron', sans-serif;
-    font-size:20px;
-    font-weight:bold;
-    position:relative;
-    margin-top:10px;
-    margin-bottom:20px;
-
-}
-
+    font-size:30px;
     
+  
+
+ }
+/* 
+#first{
+    border-style: dotted;
+    border-color: grey;
+
+
+} */
+
+/* .row{
+    border-style: dotted;
+} */
 .form-group{
     width:300px;
     font-family: 'Orbitron', sans-serif;
@@ -43,4 +44,10 @@
     line-height: 15px;
     padding:1px 1px;
 
+}
+
+#archive{
+    padding-top:25px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 30px;
 }

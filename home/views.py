@@ -14,7 +14,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.generic.dates import YearArchiveView, MonthArchiveView
 from django.db.models.functions import Extract
 from django.db.models.functions import TruncMonth, TruncYear
-
+from django.shortcuts import get_object_or_404
 
 
 #have some overlapping views in blog and home,x,t 
@@ -51,10 +51,22 @@ def home(request):
         except EmptyPage:
         # If page is out of range (e.g. 9999), deliver last page of results.
             all_posts = paginator.page(paginator.num_pages)
+
+  
         
         args = {'allposts' : all_posts,'paginator':paginator,'t':t}
         return render(request, 'home/home.html', args)  
 
+        
+def taggd(request,tag):
+    if request.method == 'GET':
+        
+    
+        q = BlogPost.objects.filter(tags__name__in=['tag'])
+        args = {'q':q}
+   
+
+        return render(request,'home/taggedblogposts.html',args)   
 
 def blog(request,year,month,day,slug):
     
@@ -69,10 +81,11 @@ def blog(request,year,month,day,slug):
         likes_count = blogpost.votes.filter(vote=+1).count()
         dislikes_count = blogpost.votes.filter(vote=-1).count()
 
-        x = BlogPost.objects.annotate(year_stamp=Extract('date', 'year')).values_list('year_stamp', flat=True)
-        t = list(x.distinct())
+        t = blogpost.tags.names()
+       
 
-        args = {'bpost': blogpost,'form':form,'comments':comments,'c':c,'likes_count':likes_count,'dislikes_count':dislikes_count,'x':x,'t':t}
+      
+        args = {'bpost': blogpost,'form':form,'comments':comments,'c':c,'likes_count':likes_count,'dislikes_count':dislikes_count, 't':t}
         return render(request,'home/blog.html',args)    
 
     if request.method == 'POST':

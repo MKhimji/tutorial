@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+     
+
+
+  {% block head %}
+  <link href="/static/accounts/taggedblogposts.css" type="text/css" rel="stylesheet">
+   
+  {% endblock %}
+
+  {% block body %}
+    {% block first %}
+  
+    <div class = "eznav">
+        <li>        
+            <span id = "bcrumb"><a href="{% url 'home:home' %}">Blog</a></span><i class="fa fa-angle-right fa-sm" aria-hidden="true"></i>
+            <span>tag</span><i class="fa fa-angle-right fa-sm" aria-hidden="true"></i>
+            <span>{{tag}}</span>
+        </li>
+    </div>
+    <table border = "1"> 
+        <tr>
+            <th>Article</th>
+           
+        </tr>
+        {% for i in q %}
+        <tr>
+            <td><a href= "{% url 'home:view_blogpost_with_pk' year=i.date.year month=i.date.month day=i.date.day slug=i.slug %}">
+            {{i.title}}</a></td>
+        </tr>
+        {% endfor %}
+       
+    </table>    
+    {% endblock %}
+    {% block second %}
+    {% endblock %}
+  {% endblock %}
+
+  
+  {% block javascript %}
+
+
+
+
+
+  {% endblock %}
+  
+
+

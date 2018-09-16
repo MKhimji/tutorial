@@ -7,7 +7,7 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericRelation
 from django.db.models import Sum
-
+from taggit.managers import TaggableManager
 
 
 
@@ -71,6 +71,7 @@ class BlogPost(models.Model):
     body = RichTextField(config_name='awesome_ckeditor')
     slug = AutoSlugField(null=True, default=None,overwrite=True, unique=True, populate_from='title')
     votes = GenericRelation(Like, related_query_name='blogposts')
+    tags = TaggableManager()
 
 #added overwrite = True because after i changed the title of the blogpost in admin it didnt update the slug and reused the old title
 

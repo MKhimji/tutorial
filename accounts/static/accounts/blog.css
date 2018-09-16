@@ -11,7 +11,7 @@
     margin-bottom:50px;
     margin-top:40px;
     color:rgb(156, 154, 154);
-    font-family: 'Abel', sans-serif;
+    font-family: 'Orbitron', sans-serif;
     font-size:15px;
     text-transform: uppercase;
 }
@@ -37,7 +37,7 @@
 
 
 #first h1{
-    font-family: 'Abel', sans-serif;
+    font-family: 'Orbitron', sans-serif;
     color: black;
     position:relative;
     font-size: 30px;
@@ -46,7 +46,7 @@
 }
 
 #first h2{
-    font-family: 'Abel', sans-serif;
+    font-family: 'Orbitron', sans-serif;
     font-size:24px;
     font-weight: bold;
 
@@ -157,20 +157,20 @@ code{
 /* needed to create a span which is used for inline elements as i couldnt style the text next to the icons */
 
 #users{
-    font-family: 'Abel', sans-serif;
+    font-family: 'Orbitron', sans-serif;
     font-size:13px;
     text-transform: uppercase;
 }
 
 #clocks{
-    font-family: 'Abel', sans-serif;
+    font-family: 'Orbitron', sans-serif;
     font-size:13px;
     text-transform: uppercase;
    
 }
 
 #comments{
-    font-family: 'Abel', sans-serif;
+    font-family: 'Orbitron', sans-serif;
     font-size:13px;
     text-transform: uppercase;
     

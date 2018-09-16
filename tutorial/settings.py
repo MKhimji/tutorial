@@ -54,6 +54,8 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'debug_toolbar',
+    'taggit',
+    'taggit_templatetags2',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -113,7 +115,7 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': '5432',
 
-
+ 
 
     }
 }

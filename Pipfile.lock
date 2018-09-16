@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "e8ca21ad98e4808406569caa744e40930fed420050955cf64cdb264cd7634ca5"
+            "sha256": "8f6f024ca80ca0b22c7c67d3f70e4cc596cec7ee7684328fb6c0b72dbddb7a40"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -31,6 +31,13 @@
             "index": "pypi",
             "version": "==5.3.1"
         },
+        "django-classy-tags": {
+            "hashes": [
+                "sha256:792f9161d0e22d55b4fab6fc297bab8ab072ffaa3075b227613a6d8473624db8",
+                "sha256:f6d12f5a4df3e387795a0d9ef2836af389cae9a1fbebda035dac043d4722b1f7"
+            ],
+            "version": "==0.8.0"
+        },
         "django-debug-toolbar": {
             "hashes": [
                 "sha256:4af2a4e1e932dadbda197b18585962d4fc20172b4e5a479490bc659fe998864d",
@@ -54,13 +61,28 @@
             ],
             "version": "==1.1.0"
         },
-        "django-widget-tweaks": {
+        "django-taggit": {
             "hashes": [
-                "sha256:a31c8a2b88af98dba6471db4722a416d1c643c87efecf9a7f17f983a2a553632",
-                "sha256:f9961162c8ed272162e22e5877d29c7780476970441dce605118ef66da685e71"
+                "sha256:a21cbe7e0879f1364eef1c88a2eda89d593bf000ebf51c3f00423c6927075dce",
+                "sha256:db4430ec99265341e05d0274edb0279163bd74357241f7b4d9274bdcb3338b17"
             ],
             "index": "pypi",
-            "version": "==1.4.2"
+            "version": "==0.23.0"
+        },
+        "django-taggit-templatetags2": {
+            "hashes": [
+                "sha256:eb41d76bdcc4f4e2979dfa93e34f98380a92296c4658646c522b514b70040322"
+            ],
+            "index": "pypi",
+            "version": "==1.6.1"
+        },
+        "django-widget-tweaks": {
+            "hashes": [
+                "sha256:a69cba6c8a6b98f0cf6eef0535f8212d635e19044ee4533d4d78df700c2e233f",
+                "sha256:bc645ef88307bc4ac269ee8ee9e572be814cd4a125c2bb6edb59ffcdc194982d"
+            ],
+            "index": "pypi",
+            "version": "==1.4.3"
         },
         "pillow": {
             "hashes": [

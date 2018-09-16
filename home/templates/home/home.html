@@ -68,9 +68,18 @@
                 {% endif %}
             </ul>
         {% endif %}
-        {% block second %}
-        {% endblock %}
-        {% endblock %}      
+        {% load taggit_templatetags2_tags %}
+        {% get_tagcloud as tags for 'home.BlogPost' %}
+        <ul>
+            {% for tag in tags %}
+            <li>{{tag}} ({{tag.num_times}})</li>
+            {% endfor %}
+        <ul>
+
+    {% endblock %}     
+    {%block second%}
+
+    {%endblock%} 
 {% endblock %}
 
 

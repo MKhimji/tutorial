@@ -37,7 +37,8 @@
                     {{ obj.title }}</a></td>
                 <td><a href="{% url 'accounts:view_profile_with_pk' pk=obj.author.pk %}">{{obj.author|title}}</a></td>
                 <!-- "|title" is a django template function used to capitalize first letter just as the title() function is in python -->
-                <td>{{obj.date}}</td></tr>
+                <td>{{obj.date}}</td>
+            </tr>
             {% endfor %}
         </table>             
     {% endblock %}            

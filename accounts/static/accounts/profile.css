@@ -1,28 +1,23 @@
-
-.container{
-    position:relative;
-    box-sizing: border-box;
-    min-height: 100vh;
-}
-    
-
-
-
-
-.container h1{
-    font-family: 'Orbitron', sans-serif;
+/* .container h1{
+    font-family: 'Montserrat', sans-serif;
     font-size:20px;
     font-weight:bold;
     position:relative;
     margin-top:15px;
     margin-bottom:15px;
 
-}
+} */
 
 .container p{
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size:12px;
 
 
 
+}
+
+#archive{
+    padding-top:25px;
+    font-family: 'Abel', sans-serif;
+    font-size: 30px;
 }
