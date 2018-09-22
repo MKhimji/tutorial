@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
-   
+    {% include "taggit_templatetags2/tagcanvas_include_js_static.html" %}
   {% endblock %}
 
   {% block body %}
@@ -45,13 +45,14 @@
         {% load taggit_templatetags2_tags %}
         {% get_tags_for_object bpost as "tags" %}
         
+        
         <ul>
             {% for tag in tags %}
-            <li><a href="{% url 'home:taggd' tag=tag %}">{{tag}}</a></li>
-            
+            <a id ="tagz" href="{% url 'home:taggd' tag=tag %}"><button type = "button">{{tag}}</button></a>
             {% endfor %}
         </ul>
-       
+        
+ 
        
         <!-- <div id = "tagz">
             <a>{{t|join:" "}}</a>

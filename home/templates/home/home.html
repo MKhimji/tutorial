@@ -7,6 +7,7 @@
 <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
 <link href="/static/ckeditor/ckeditor/plugins/codesnippet/lib/highlight/styles/github.css" rel="stylesheet"/>
+{% include "taggit_templatetags2/tagcanvas_include_js_static.html" %}
     
 {% endblock %}
  
@@ -15,6 +16,7 @@
  
 {% block body %}
     {% block first %}
+    
         <div class = "eznav">
             <li>
                 <span id ="bcrumb"><a href="{% url 'home:home' %}">Blog</a></span><i class="fa fa-angle-right fa-sm" aria-hidden="true"></i>
@@ -67,19 +69,13 @@
                     <li><a href={{ request.get_full_path|link_name:allposts.paginator.num_pages }}>⇥</a></li>
                 {% endif %}
             </ul>
-        {% endif %}
-        {% load taggit_templatetags2_tags %}
-        {% get_tagcloud as tags for 'home.BlogPost' %}
-        <ul>
-            {% for tag in tags %}
-            <li>{{tag}} ({{tag.num_times}})</li>
-            {% endfor %}
-        <ul>
-
+        {% endif %}    
     {% endblock %}     
-    {%block second%}
-
-    {%endblock%} 
+    {% block second %}
+    {% load taggit_templatetags2_tags %}
+        
+    {% include_tagcanvas 'one' '100 px' '100 px' 'home:tagcanv' 'home.BlogPost' %}
+    {% endblock %} 
 {% endblock %}
 
 

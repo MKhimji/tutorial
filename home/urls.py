@@ -2,6 +2,7 @@ from django.conf.urls import url
 from  .import views
 from home.models import BlogPost, Comment, Like
 from home.views import VotesView, BlogPostYearArchiveView, BlogPostMonthArchiveView
+from taggit_templatetags2.views import TagCanvasListView
 
 
 
@@ -30,5 +31,12 @@ urlpatterns =[
         
    url(r'^tag/(?P<tag>[-\w]+)/$',
           views.taggd,
-          name="taggd")
+          name="taggd"),
+
+    url(r'^tag-list/(?P<tag_id>.*)/(?P<tag_slug>.*)/',
+        TagCanvasListView.as_view(), 
+        name="tagcanv")
+  
+
+
 ]

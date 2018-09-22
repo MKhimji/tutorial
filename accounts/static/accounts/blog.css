@@ -247,6 +247,35 @@ ul li{
 
 
 
+
+button{    
+    background-color:rgba(133, 253, 253, 0.1);
+    padding-top:1px;
+    padding-bottom: 1px;
+    border-style: solid;
+    border-color:rgba(25, 196, 196,0.1);
+    text-transform: uppercase;
+    
+}
+
+button:hover{
+    border-color:rgb(205, 243, 243);
+    transition:ease 0.7s;
+    transition-duration:0.3s;
+}
+
+#tagz{
+    
+    color:black;
+    font-family: 'Orbitron', sans-serif;
+    font-size:13px;
+    
+}
+
+#tagz:hover{
+    transition:ease-in 2s;
+    
+} 
 @media only screen and (max-width: 768px) {
   
 

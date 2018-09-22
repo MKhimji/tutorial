@@ -61,12 +61,14 @@ def home(request):
 def taggd(request,tag):
     if request.method == 'GET':
         
-    
-        q = BlogPost.objects.filter(tags__name__in=['tag'])
-        args = {'q':q}
+        # tag = BlogPost.objects.values_list('tags', flat=True).get(pk=1)
+        q = BlogPost.objects.filter(tags__name__in=[tag])
+        args = {'q':q,'tag':tag}
    
 
         return render(request,'home/taggedblogposts.html',args)   
+
+
 
 def blog(request,year,month,day,slug):
     
