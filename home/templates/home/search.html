@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+    <title>Search Results</title>
+    <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+{% endblock %}
+
+
+
+{% block body %}
+{% block first %}
+
+<table border = "1"> 
+    <tr>
+        <th id="th1">Search Results</th>
+    </tr>
+    
+
+    {% for i in x %}
+  
+    <tr>
+        <td><a href= "{% url 'home:view_blogpost_with_pk' year=i.date.year month=i.date.month day=i.date.day slug=i.slug %}">
+        {{i.title|title}}</a></td>
+    </tr>
+    {% endfor %}
+    
+    
+</table>   
+
+
+{% block second %}
+{% endblock %}
+{% endblock %}
+{% endblock %}

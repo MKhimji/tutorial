@@ -69,6 +69,14 @@ def taggd(request,tag):
         return render(request,'home/taggedblogposts.html',args)   
 
 
+def search(request):
+    if request.method == 'GET':
+        title = request.GET.get('title', None)
+        x = BlogPost.objects.filter(title__search=title)
+        args = {'x':x,'title':title}
+
+        return render(request, 'home/search.html', args)
+
 
 def blog(request,year,month,day,slug):
     

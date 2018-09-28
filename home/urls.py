@@ -29,13 +29,17 @@ urlpatterns =[
         BlogPostMonthArchiveView.as_view(),
         name="blogpost_month_archive"),
         
-   url(r'^tag/(?P<tag>[-\w]+)/$',
+    url(r'^tag/(?P<tag>[-\w]+)/$',
           views.taggd,
           name="taggd"),
 
     url(r'^tag-list/(?P<tag_id>.*)/(?P<tag_slug>.*)/',
         TagCanvasListView.as_view(), 
-        name="tagcanv")
+        name="tagcanv"),
+
+    url(r'^search/$',
+        views.search, 
+        name="search")
   
 
 

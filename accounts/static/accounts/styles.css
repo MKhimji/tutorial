@@ -194,6 +194,12 @@ hr {
     
 }
 
+
+#search p{
+    font-family: 'Orbitron', sans-serif;
+    font-size: 30px;
+}
+
 #selection{
     font-family: 'Orbitron', sans-serif;
 }

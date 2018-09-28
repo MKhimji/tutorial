@@ -42,6 +42,6 @@ class BlogPostForm(forms.ModelForm):
 
 
 
-    
+
 
     

@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
 <link href="/static/ckeditor/ckeditor/plugins/codesnippet/lib/highlight/styles/github.css" rel="stylesheet"/>
-{% include "taggit_templatetags2/tagcanvas_include_js_static.html" %}
+
     
 {% endblock %}
  
@@ -72,10 +72,9 @@
         {% endif %}    
     {% endblock %}     
     {% block second %}
-    {% load taggit_templatetags2_tags %}
-        
-    {% include_tagcanvas 'one' '200 px' '200 px' 'home:tagcanv' 'home.BlogPost' %}
-    {% endblock %} 
+    
+
+    {% endblock %}
 {% endblock %}
 
 

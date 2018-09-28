@@ -53,15 +53,20 @@
                 </div>
                 <div id = "second" class = "col-md-2">
                     
-                    <h1 id = "archive">ARCHIVE</h1>
+                    <!-- <h1 id = "archive">ARCHIVE</h1> -->
                     <hr>
                         <select name="menu" id="selection">
-                            <option selected disabled>Select Month</option>
+                            <option selected disabled>ARCHIVE</option>
                             {% for i,v in s %}
                                <option value="{% url 'home:blogpost_month_archive' year=v month=i %}"><a href="{% url 'home:blogpost_month_archive' year=v month=i %}">{{i}} {{v}}</a></option>
                             {% endfor %}   
                         </select>
                     <hr>
+                    
+                    <form action="{% url 'home:search' %}" method="get">
+                    <input type="search" id="title" name="title" placeholder="Search..."/>
+                    <input type="submit" value="Submit">
+                    </form>
                     {% block second %}{% endblock %}
             
                 </div>
