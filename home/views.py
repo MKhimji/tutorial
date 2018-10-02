@@ -1,6 +1,5 @@
-from home.forms import BlogPostForm
 from django.shortcuts import render, redirect
-from home.models import BlogPost,Comment,Like
+from home.models import BlogPost, Like
 from django.contrib.auth.models import User
 from django.shortcuts import reverse
 from django.template.defaultfilters import slugify
@@ -84,10 +83,6 @@ def blog(request,year,month,day,slug):
 
         blogpost = BlogPost.objects.get(date__year=year, date__month=month, date__day=day,slug=slug)
         
-        form = BlogPostForm()
-        comments = Comment.objects.filter(comment_body_id=blogpost).order_by('-date') #Link comments to blogpost // comment_body is foreignkey to blogpost model
-        c = comments.count()
-        
         likes_count = blogpost.votes.filter(vote=+1).count()
         dislikes_count = blogpost.votes.filter(vote=-1).count()
 
@@ -95,7 +90,7 @@ def blog(request,year,month,day,slug):
        
 
       
-        args = {'bpost': blogpost,'form':form,'comments':comments,'c':c,'likes_count':likes_count,'dislikes_count':dislikes_count, 't':t}
+        args = {'bpost': blogpost,'likes_count':likes_count,'dislikes_count':dislikes_count}
         return render(request,'home/blog.html',args)    
 
     if request.method == 'POST':

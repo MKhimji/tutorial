@@ -1,12 +1,7 @@
 /* require import statements to work with ckeditor */
 
-@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
-@import url(https://fonts.googleapis.com/css?family=Abel);
-
-
-
- 
 
 /* breadcrumbs */
 
@@ -32,7 +27,6 @@
     }
 
 
-
 #first h1 a{
     font-family: 'Orbitron', sans-serif;
     color:black;
@@ -42,24 +36,16 @@
 
 }
 
-
-
 #first p{
     color:black;
     max-width:600px;
-    word-wrap: break-word;
-    font-family: 'Abel', sans-serif;
-    
+    word-wrap: break-word; 
 }
 
 
 #first p a{
     text-decoration: underline;
-
 }
-
-
-
 
 button{    
     background-color:rgba(133, 253, 253, 0.1);
@@ -67,7 +53,7 @@ button{
     padding-bottom: 1px;
     border-style: solid;
     border-color:rgba(25, 196, 196,0.1);
-    text-transform: uppercase;
+    
     
 }
 
@@ -78,53 +64,18 @@ button:hover{
 }
 
 #readmore{
-    
     color:black;
     font-family: 'Orbitron', sans-serif;
     font-size:13px;
-    
 }
 
 
 #readmore:hover{
     transition:ease-in 2s;
-    
 } 
 
 
 /*code*/
-
-pre{
-    display: inline-flex;
-    font-family: monospace;
-    padding: 0px;
-    margin-bottom: 8px;
-    font-size: 13px;
-    line-height:1.3;
-    word-break: break-all;
-    word-wrap: break-word;
-    white-space: pre-wrap;
-    background-color:none;
-    border:0px;
-    border-radius:0px;
-    
-}   
-
-
-code{
-    font-family: monospace;
-    padding: 0px;
-    margin: 0px;
-    font-size: 13px;
-    line-height: 1.3;
-    word-break: break-all;
-    word-wrap: break-word;
-    white-space: pre-wrap;
-    background-color:none;
-    border:0px;
-    border-radius:0px;
-    
-}   
 
 
 

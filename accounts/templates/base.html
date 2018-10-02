@@ -23,10 +23,9 @@
                  <div class="navbar-brand">
                  {% load static %}
                      <a id = "brand" href="{% url 'home:home' %}"><i class="fa fa-code fa-lg"  aria-hidden="true"></i></a>
-                 <!-- <img src="{% static "m2.png" %}"/> -->
                  </div>
              </div>
-             
+
              <ul class="nav navbar-nav navbar-right">   
                  <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-caret-down fa-lg" aria-hidden="true"></i></a>
@@ -52,21 +51,20 @@
                     {% block first %}{% endblock %}
                 </div>
                 <div id = "second" class = "col-md-2">
-                    
-                    <!-- <h1 id = "archive">ARCHIVE</h1> -->
-                    <hr>
-                        <select name="menu" id="selection">
-                            <option selected disabled>ARCHIVE</option>
-                            {% for i,v in s %}
-                               <option value="{% url 'home:blogpost_month_archive' year=v month=i %}"><a href="{% url 'home:blogpost_month_archive' year=v month=i %}">{{i}} {{v}}</a></option>
-                            {% endfor %}   
-                        </select>
-                    <hr>
-                    
                     <form action="{% url 'home:search' %}" method="get">
-                    <input type="search" id="title" name="title" placeholder="Search..."/>
-                    <input type="submit" value="Submit">
+                        <input type="search" id="title" name="title" placeholder="Search..."/>
+                        <input type="submit" value="Submit">
                     </form>
+                <hr>
+                    <select name="menu" id="selection">
+                        <option selected disabled>Archive</option>
+                        {% for i,v in s %}
+                            <option value="{% url 'home:blogpost_month_archive' year=v month=i %}"><a href="{% url 'home:blogpost_month_archive' year=v month=i %}">{{i}} {{v}}</a></option>
+                        {% endfor %}   
+                    </select>
+                <hr>
+                    
+
                     {% block second %}{% endblock %}
             
                 </div>

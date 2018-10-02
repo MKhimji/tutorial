@@ -4,16 +4,11 @@
 
   {% block head %}
   <link href="/static/accounts/taggedblogposts.css" type="text/css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
-   
   {% endblock %}
 
   {% block body %}
     {% block first %}
-
-   
     {% load taggit_templatetags2_tags %}
-    
 
     <div class = "eznav">
         <li>        
@@ -35,8 +30,6 @@
             {{i.title}}</a></td>
         </tr>
         {% endfor %}
-        
-        
     </table>    
     {% endblock %}
     {% block second %}

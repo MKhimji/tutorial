@@ -83,15 +83,6 @@ class BlogPost(models.Model):
 
 
 
-class Comment(models.Model):
-    Name = models.CharField(max_length=64)
-    date = models.DateTimeField(auto_now_add=True)
-    comment_body = models.ForeignKey(BlogPost)
-    comment = models.CharField(max_length=500)
-    votes = GenericRelation(Like,related_query_name='comments')
-
-    def __str__(self):
-        return "%s %s" %(self.Name, self.comment_body)
 
 
 

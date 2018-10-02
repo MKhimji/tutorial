@@ -15,7 +15,7 @@ from django.contrib.auth import update_session_auth_hash, authenticate, login
 from django.contrib.auth.decorators import login_required
 
 from home.models import BlogPost
-
+from django.forms.models import model_to_dict
 def register(request):
     
     if request.method =='POST':
@@ -59,6 +59,7 @@ def view_profile(request, pk=None):
     return render(request, 'accounts/profile.html', args)
 
 def edit_profile(request):
+    user=User.objects.get(id=request.user.id)
     if request.method == 'POST':
         form = EditProfileForm(request.POST, instance=request.user)
 
@@ -66,7 +67,7 @@ def edit_profile(request):
             form.save()
             return redirect(reverse('accounts:view_profile'))
     else:
-        form = EditProfileForm(instance=request.user)
+        form = EditProfileForm(initial=model_to_dict(user))
         args = {'form': form}
         return render(request, 'accounts/edit_profile.html', args)
 

@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from home.models import BlogPost, Comment
+from home.models import BlogPost
 
 
 
@@ -26,19 +26,19 @@ from home.models import BlogPost, Comment
 ##Renders as: <input type="text" ...>
 
 
-class BlogPostForm(forms.ModelForm):
-    comment = forms.CharField(widget = forms.Textarea(
-        attrs={
-            'class': 'form-control',
-            'placeholder':'Enter your comments...'
-            }
+# class BlogPostForm(forms.ModelForm):
+#     comment = forms.CharField(widget = forms.Textarea(
+#         attrs={
+#             'class': 'form-control',
+#             'placeholder':'Enter your comments...'
+#             }
 
-))
+# ))
 
 
-    class Meta:
-        model = Comment
-        exclude = ['comment_body',]
+#     class Meta:
+#         model = Comment
+#         exclude = ['comment_body',]
 
 
 

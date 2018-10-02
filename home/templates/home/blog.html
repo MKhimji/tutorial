@@ -7,17 +7,18 @@
     <link href="/static/ckeditor/ckeditor/plugins/codesnippet/lib/highlight/styles/github.css" rel="stylesheet"/>
     <link href="/static/accounts/blog.css" type="text/css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
+
+    
     {% include "taggit_templatetags2/tagcanvas_include_js_static.html" %}
   {% endblock %}
 
   {% block body %}
     {% block first %}
+   
         <div class = "eznav">
             <li>        
                 <span id = "bcrumb"><a href="{% url 'home:home' %}">Blog</a></span><i class="fa fa-angle-right fa-sm" aria-hidden="true"></i>
-                <span id = "nonita">{{bpost.title}}</span>
+                <span id = "bctitle">{{bpost.title}}</span>
             </li>
         </div>
         
@@ -36,156 +37,150 @@
         
         <ul>
             <!-- <li><a href="{% url 'home:home' %}">Mo's Blog</a></li> -->
-            <li class="fa fa-thumbs-up" aria-hidden="true" data-id="{{ like_obj.id }}" data-type="blog" data-action="like" title="Like">
-                <span data-count="like">{{likes_count}}</li>
-            <li class="fa fa-thumbs-down" aria-hidden="true" data-id="{{ like_obj.id }}" data-type="blog" data-action="dislike" title="Dislike">
-                <span data-count="dislike">{{dislikes_count}}</li>
+            <li class="fa fa-thumbs-up fa-2x fa-border" aria-hidden="true" data-id="{{ like_obj.id }}" data-type="blog" data-action="like" title="Like">
+                <span id = "likescount" data-count="like">{{likes_count}}</li>
+            <li class="fa fa-thumbs-down fa-2x fa-border" aria-hidden="true" data-id="{{ like_obj.id }}" data-type="blog" data-action="dislike" title="Dislike">
+                <span id = "dislikescount" data-count="dislike">{{dislikes_count}}</li>
         </ul>
        
         {% load taggit_templatetags2_tags %}
         {% get_tags_for_object bpost as "tags" %}
-        
         
         <ul>
             {% for tag in tags %}
             <a id ="tagz" href="{% url 'home:taggd' tag=tag %}"><button type = "button">{{tag}}</button></a>
             {% endfor %}
         </ul>
-        
- 
-       
-        <!-- <div id = "tagz">
-            <a>{{t|join:" "}}</a>
-        </div> -->
+    
 
 
         <div id="disqus_thread"></div>
     {% endblock %}
     {% block second %}
     {% endblock %}
-{% endblock %}
+  {% endblock %}
 
   
   {% block javascript %}
 
 
-<script>
+    <script>
 
-/**
-*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
 
-var disqus_config = function () {
-this.page.url = blogpost.id = 1;  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = "{% url 'home:view_blogpost_with_pk' year=bpost.date.year month=bpost.date.month day=bpost.date.day slug=bpost.slug %}"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
+    var disqus_config = function () {
+    this.page.url = blogpost.id = 1;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = "{% url 'home:view_blogpost_with_pk' year=bpost.date.year month=bpost.date.month day=bpost.date.day slug=bpost.slug %}"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
 
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://muhammad-7.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://muhammad-7.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
-  <script>$(document).ready(function() {
-    $('pre code').each(function(i, block) {
-      hljs.highlightBlock(block);
+    <script>$(document).ready(function() {
+        $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+        });
     });
-  });
-  </script>
+    </script>
 
 
 
 
 
-<script>
-function getCookie(name) {
-    var cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-        var cookies = document.cookie.split(';');
-        for (var i = 0; i < cookies.length; i++) {
-            var cookie = jQuery.trim(cookies[i]);
-            // Does this cookie string begin with the name we want?
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
+    <script>
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
             }
         }
+        return cookieValue;
     }
-    return cookieValue;
-}
-</script>
+    </script>
 
 
-<script>
-$(function () {
-    $.ajaxSetup({
-        headers: { "X-CSRFToken": getCookie("csrftoken") }
+    <script>
+    $(function () {
+        $.ajaxSetup({
+            headers: { "X-CSRFToken": getCookie("csrftoken") }
+        });
     });
-});
-</script>
+    </script>
 
 
-<!-- must be a way 2 test this like u can test python in shell...console? -->
-  <script>
-  function like()
-{
-    var like = $(this);//guessing like is a like object from Like model, assigning it to $(this) so that we can have jquery functionality for like object.
-    var type = like.data('type');     // https://api.jquery.com/data/  //this code uses second part on link .data(key)
-    var pk = like.data('id'); 
-    // pk = like_obj.id(data-id from html above) and like_obj.id i think is like_blogpost/comment.id in my case the id is defined by year month...
-    //like  = $(this) so we got $(this).like_obj.id
-    var action = like.data('action');
-    var dislike = like.next();
-    
- 
-    $.ajax({
-        url: '{% url "home:blog_like" year=bpost.date.year month=bpost.date.month day=bpost.date.day slug=bpost.slug %}',
-        method : 'POST',
-        data : { 'obj' : pk }, // data to send to the server. Isnt this just the key/value pairing from data dicitionary in views?? i.e. obj = key , pk = values
- 
-        success : function (json) {
-            like.find("[data-count='like']").text(json.like_count);
-            dislike.find("[data-count='dislike']").text(json.dislike_count);
-        }
-    });
- 
-    return false;
-}
- </script>
- <script>
-function dislike()
-{
-
-    var dislike = $(this);
-    var type = dislike.data('type');
-    var pk = dislike.data('id');
-    var action = dislike.data('action');
-    var like = dislike.prev();
- 
-    $.ajax({
-        url : '{% url "home:blog_dislike" year=bpost.date.year month=bpost.date.month day=bpost.date.day slug=bpost.slug %}',
-        method : 'POST',
-        data : { 'obj' : pk }, 
+    <!-- must be a way 2 test this like u can test python in shell...console? -->
+    <script>
+    function like()
+    {
+        var like = $(this);//guessing like is a like object from Like model, assigning it to $(this) so that we can have jquery functionality for like object.
+        var type = like.data('type');     // https://api.jquery.com/data/  //this code uses second part on link .data(key)
+        var pk = like.data('id'); 
+        // pk = like_obj.id(data-id from html above) and like_obj.id i think is like_blogpost/comment.id in my case the id is defined by year month...
+        //like  = $(this) so we got $(this).like_obj.id
+        var action = like.data('action');
+        var dislike = like.next();
         
- 
-        success : function (json) {
-            dislike.find("[data-count='dislike']").text(json.dislike_count);
-            like.find("[data-count='like']").text(json.like_count);
-        }
+    
+        $.ajax({
+            url: '{% url "home:blog_like" year=bpost.date.year month=bpost.date.month day=bpost.date.day slug=bpost.slug %}',
+            method : 'POST',
+            data : { 'obj' : pk }, // data to send to the server. Isnt this just the key/value pairing from data dicitionary in views?? i.e. obj = key , pk = values
+    
+            success : function (json) {
+                like.find("[data-count='like']").text(json.like_count);
+                dislike.find("[data-count='dislike']").text(json.dislike_count);
+            }
+        });
+    
+        return false;
+    }
+    </script>
+    <script>
+    function dislike()
+    {
+
+        var dislike = $(this);
+        var type = dislike.data('type');
+        var pk = dislike.data('id');
+        var action = dislike.data('action');
+        var like = dislike.prev();
+    
+        $.ajax({
+            url : '{% url "home:blog_dislike" year=bpost.date.year month=bpost.date.month day=bpost.date.day slug=bpost.slug %}',
+            method : 'POST',
+            data : { 'obj' : pk }, 
+            
+    
+            success : function (json) {
+                dislike.find("[data-count='dislike']").text(json.dislike_count);
+                like.find("[data-count='like']").text(json.like_count);
+            }
+        });
+    
+        return false;
+    }
+    </script>
+    <script>
+    $(function() {
+        $('[data-action="like"]').click(like);
+        $('[data-action="dislike"]').click(dislike);
     });
- 
-    return false;
-}
-</script>
-<script>
-$(function() {
-    $('[data-action="like"]').click(like);
-    $('[data-action="dislike"]').click(dislike);
-});
-  </script>
+    </script>
 
 
 

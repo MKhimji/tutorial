@@ -1,6 +1,6 @@
 from django.conf.urls import url
 from  .import views
-from home.models import BlogPost, Comment, Like
+from home.models import BlogPost, Like
 from home.views import VotesView, BlogPostYearArchiveView, BlogPostMonthArchiveView
 from taggit_templatetags2.views import TagCanvasListView
 

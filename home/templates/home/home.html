@@ -4,19 +4,12 @@
 {% block head %}
 
 <link href="/static/accounts/home.css" type="text/css" rel="stylesheet"> 
-<link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
 <link href="/static/ckeditor/ckeditor/plugins/codesnippet/lib/highlight/styles/github.css" rel="stylesheet"/>
-
-    
+ 
 {% endblock %}
- 
 
-
- 
 {% block body %}
     {% block first %}
-    
         <div class = "eznav">
             <li>
                 <span id ="bcrumb"><a href="{% url 'home:home' %}">Blog</a></span><i class="fa fa-angle-right fa-sm" aria-hidden="true"></i>
@@ -72,8 +65,6 @@
         {% endif %}    
     {% endblock %}     
     {% block second %}
-    
-
     {% endblock %}
 {% endblock %}
 

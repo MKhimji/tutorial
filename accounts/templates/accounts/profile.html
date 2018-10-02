@@ -1,44 +1,46 @@
 {% extends 'base.html' %}
 
 
-{% block head %}
-    <title>Profile</title>
-    <link href="/static/accounts/profile.css" type="text/css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Saira" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-{% endblock %}
+    {% block head %}
+        <title>Profile</title>
+        <link href="/static/accounts/profile.css" type="text/css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Saira" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    {% endblock %}
 
 
 
-{% block body %}
-{% block first %}
+    {% block body %}
+        {% block first %}
 
-<div class = "container">
-    <div class = "col-md-10">
-        {% if messages %}
-        {% for message in messages %}
-        <div class = "" role = "alert">
-            <center>{{ message }}</center>
+        <div class = "prform">
+            
+                {% if messages %}
+                {% for message in messages %}
+                <div class = "" role = "alert">
+                    <center>{{ message }}</center>
+                </div>
+                {% endfor %}
+                {% endif %}
+                <h1 class = "text-uppercase">Profile</h1>
+                <p>Username: {{user}}</p>
+                <p>First name: {{user.first_name}}</p>
+                <p>Last name: {{user.last_name}}</p>
+                <p>City: {{ user.userprofile.city }}</p>
+            
+                <p>About: {{ user.userprofile.description }}</p>
+                
+                
+                
+                {% if user.userprofile.image %}
+                <img src="{{user.userprofile.image.url}}" width = "240">
+                {% endif %}
+        
         </div>
-        {% endfor %}
-        {% endif %}
-        <h1 class = "text-uppercase">Profile</h1>
-        <p>Username: {{user}}</p>
-        <p>First name: {{user.first_name}}</p>
-        <p>Last name: {{user.last_name}}</p>
-       
-        <p>Description: {{ user.userprofile.description }}</p>
-        
-        <p>City: {{ user.userprofile.city }}</p>
-        
-        {% if user.userprofile.image %}
-        <img src="{{user.userprofile.image.url}}" width = "240">
-        {% endif %}
-    </div>
-</div>
-{ % block second %}
-{% endblock % }
-{% endblock %}
-{% endblock %}
+        {% endblock %}
+        {% block second %}
+    
+        {% endblock %}
+    {% endblock %}
