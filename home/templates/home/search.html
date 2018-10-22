@@ -3,15 +3,20 @@
 
 {% block head %}
     <title>Search Results</title>
-    <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link href="/static/accounts/search.css" type="text/css" rel="stylesheet">
 {% endblock %}
 
 
 
 {% block body %}
 {% block first %}
-
+<div class = "eznav">
+    <li>        
+        <span id = "bcrumb"><a href="{% url 'home:home' %}">Blog</a></span><i class="fa fa-angle-right fa-sm" aria-hidden="true"></i>
+        <span>SEARCH</span><i class="fa fa-angle-right fa-sm" aria-hidden="true"></i>
+        <span>{{title}}</span>
+    </li>
+</div>
 <table border = "1"> 
     <tr>
         <th id="th1">Search Results</th>
@@ -19,7 +24,6 @@
     
 
     {% for i in x %}
-  
     <tr>
         <td><a href= "{% url 'home:view_blogpost_with_pk' year=i.date.year month=i.date.month day=i.date.day slug=i.slug %}">
         {{i.title|title}}</a></td>

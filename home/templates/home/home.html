@@ -23,7 +23,7 @@
                 {{p.author.username|title}}</a></span>
                 <!-- |title is django template function yo capitalize first letter of username -->
             <span id = "clocks"><i class="fa fa-clock-o" aria-hidden="true"></i>{{p.date}}</span>
-            <span id = "comments"><i class="fa fa-comment" aria-hidden="true"></i><a href= "{% url 'home:view_blogpost_with_pk' year=p.date.year month=p.date.month day=p.date.day slug=p.slug %}#wellcomments"></a> {{p.comment_set.count}} comments</span>      
+            <span id = "comments"><i class="fa fa-comment" aria-hidden="true"></i><a href= "{% url 'home:view_blogpost_with_pk' year=p.date.year month=p.date.month day=p.date.day slug=p.slug %}#wellcomments"></a> comments</span>      
         </div>                             
         <p>{{p.body|safe|truncatewords:"50"}}</p>
         <a id= "readmore" href="{% url 'home:view_blogpost_with_pk' year=p.date.year month=p.date.month day=p.date.day slug=p.slug %}"><button type = "button">Read more</button></a>

@@ -1,0 +1,48 @@
+.container{
+    position:relative;
+    top:60px;
+    float:left;
+
+}
+
+
+
+.container h1{
+    font-family: 'Saira', sans-serif;
+    font-size:30px;
+    font-weight:bold;
+    position:relative;
+    bottom:10px;
+
+}
+
+.form-group{
+    width:300px;
+    font-family: 'Saira', sans-serif;
+    font-size:20px;
+    position:static;
+    top:100px;
+    left:100px;
+
+}
+
+.form-group small{
+    color:grey;
+    font-size:12px;
+}
+
+
+.errorlist{
+    color:red;
+}
+
+#sub{
+    font-family: 'Saira', sans-serif;
+    font-size: 20px;
+    width:90px;
+    height: 25px;
+    text-align: center;
+    line-height: 15px;
+    padding:1px 1px;
+
+}

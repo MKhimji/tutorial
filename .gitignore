@@ -1,4 +1,10 @@
 *.pyc
 .vscode/
+/tutorial/settings/local.py
 
-*.todo.txt
+todo.txt
+deployment.txt
+logs/
+run/
+nginx_signing.key
+

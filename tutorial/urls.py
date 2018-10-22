@@ -3,6 +3,10 @@ from django.contrib import admin
 from tutorial import views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.conf import settings
+from django.contrib.staticfiles.handlers import StaticFilesHandler
+from django.core.wsgi import get_wsgi_application
+
 
 ##namespace
 ##If you have multiple apps and you want to use the same urls

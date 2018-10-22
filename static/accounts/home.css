@@ -1,0 +1,156 @@
+/* require import statements to work with ckeditor */
+
+
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+/* breadcrumbs */
+
+.eznav{
+    margin-bottom:50px;
+    margin-top:40px;
+    color:rgb(156, 154, 154);
+    font-family: 'Orbitron', sans-serif;
+    font-size:15px;
+    text-transform: uppercase;
+}
+
+#bcrumb{
+    padding:2px;  
+}
+
+
+#bcrumb a:hover{
+    text-decoration: none;
+    color:black;
+    transition-timing-function: ease-in-out;
+    transition-duration:0.1s;
+    }
+
+
+#first h1 a{
+    font-family: 'Orbitron', sans-serif;
+    color:black;
+    position:relative;
+    font-size: 30px;
+    text-decoration:none;
+
+}
+
+#first p{
+    color:black;
+    max-width:600px;
+    word-wrap: break-word; 
+}
+
+
+#first p a{
+    text-decoration: underline;
+}
+
+button{    
+    background-color:rgba(133, 253, 253, 0.1);
+    padding-top:1px;
+    padding-bottom: 1px;
+    border-style: solid;
+    border-color:rgba(25, 196, 196,0.1);
+    
+    
+}
+
+button:hover{
+    border-color:rgb(205, 243, 243);
+    transition:ease 0.7s;
+    transition-duration:0.3s;
+}
+
+#readmore{
+    color:black;
+    font-family: 'Orbitron', sans-serif;
+    font-size:13px;
+}
+
+
+#readmore:hover{
+    transition:ease-in 2s;
+} 
+
+
+/*code*/
+
+
+
+
+/*user clock comment icons*/
+
+.fa-user{
+    font-size:8px;
+    margin-right:2px;
+    
+    
+}
+
+.fa-clock-o{
+    font-size:8px;
+    margin-left:6px;
+    margin-right:5px;
+
+}
+
+
+.fa-comment{
+    font-size:8px;
+    margin-left:5px;
+    margin-right:2px;
+}
+
+.fa.fa-angle-right{
+    font-size:12px;
+    padding:6px;
+ 
+}
+
+/* needed to create a span which is used for inline elements as i couldnt style the text next to the icons */
+
+#users{
+    font-family: 'Orbitron', sans-serif;
+    font-size:12px;
+    text-transform: uppercase;
+    
+    
+   
+}
+
+#users a:hover{
+    text-decoration: none;
+
+}
+
+#clocks{
+    font-family: 'Orbitron', sans-serif;
+    font-size:12px;
+    text-transform: uppercase;
+}
+
+#comments{
+    font-family: 'Orbitron', sans-serif;
+    font-size:12px;
+    text-transform: uppercase;
+    
+}
+
+
+/* Blue is the content
+Green is the padding
+Orange is the border
+Red is the margin */
+
+
+ @media only screen and (max-width: 768px) {
+  
+
+    
+} 
+
+
+
+
