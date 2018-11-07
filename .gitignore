@@ -7,4 +7,5 @@ deployment.txt
 logs/
 run/
 nginx_signing.key
+.env
 

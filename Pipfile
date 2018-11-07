@@ -20,6 +20,4 @@ pillow = "*"
 django-taggit = "*"
 "django-taggit-templatetags2" = "*"
 gunicorn = "*"
-
-
-
+django-environ = "*"
