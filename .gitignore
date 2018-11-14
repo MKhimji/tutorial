@@ -2,9 +2,12 @@
 .vscode/
 /tutorial/settings/local.py
 
+
 todo.txt
 deployment.txt
+replacements.txt
 logs/
+bfg-repo-cleaner/
 run/
 nginx_signing.key
 .env
