@@ -1,8 +1,0 @@
-body{
-    background: url(http://www.uniwallpaper.com/static/images/wallpapers-9_doT4cEy.jpg)no-repeat center center;
-    background-size:cover;
-    background-position: 0px 0px;
-}
-
-
-https://img09.deviantart.net/5bbb/i/2015/287/a/4/black_dragon_by_sandara-d6h59lm.jpg - black dragon
