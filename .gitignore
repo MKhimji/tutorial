@@ -11,4 +11,6 @@ bfg-repo-cleaner/
 run/
 nginx_signing.key
 .env
+tutorial.sql
+for bg on login page.txt
 
