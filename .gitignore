@@ -1,10 +1,12 @@
 *.pyc
 .vscode/
 /tutorial/settings/local.py
+/config/nginx/
+/config/db/dump.sql/
 
 
 todo.txt
-deployment.txt
+Deployment.txt
 replacements.txt
 logs/
 bfg-repo-cleaner/
@@ -13,4 +15,8 @@ nginx_signing.key
 .env
 tutorial.sql
 for bg on login page.txt
+nginx2.conf
+nginx.conf
+*.sql
+
 

@@ -1,3 +1,6 @@
+#local gunicorn script for virtualenv
+
+
 #!usr/bin/fish
 
 set NAME "tutorial" 

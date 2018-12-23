@@ -1,0 +1,19 @@
+#Docker gunicorn script
+
+#!usr/bin/fish
+
+set NAME "app" 
+set DIR /app
+set USER m
+set GROUP m
+set NUM_WORKERS 3
+set DJANGO_SETTINGS_MODULE tutorial.settings
+set DJANGO_WSGI_MODULE tutorial.wsgi
+set LOG_LEVEL error
+
+set -x DJANGO_SETTINGS_MODULE $DJANGO_SETTINGS_MODULE
+set -x PYTHONPATH $DIR:$PYTHONPATH
+
+exec /usr/local/bin/gunicorn $DJANGO_WSGI_MODULE --workers $NUM_WORKERS --bind :8000 --name $NAME --user $USER
+
+
