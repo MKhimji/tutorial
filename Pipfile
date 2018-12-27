@@ -10,7 +10,6 @@ pylint = "<2.0.0"
 python_version = "3.6"
 
 [packages]
-django = "==1.11.2"
 django-widget-tweaks = "*"
 django-extensions = "==1.9.7"
 django-ckeditor = "==5.3.1"
@@ -21,3 +20,4 @@ django-taggit = "*"
 gunicorn = "*"
 django-environ = "*"
 pillow = "*"
+django = "==1.11.5"
